@@ -1,9 +1,6 @@
 This talk aims to give explain some lessons learnt and tips on using
 DBIx::Class with a legacy database schema.
 
-The talk will explain the backgrounds of the company i am working for,
-the current state of their codebase, and the technical problems faced.
-
 An overview of DBIx::Class will be given, although this will not be in
 great detail and there is some expectation of knowledge of the basics
 of dbic
