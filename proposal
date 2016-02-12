@@ -1,0 +1,40 @@
+This talk aims to give explain some lessons learnt and tips on using
+DBIx::Class with a legacy database schema.
+
+The talk will explain the backgrounds of the company i am working for,
+the current state of their codebase, and the technical problems faced.
+
+An overview of DBIx::Class will be given, although this will not be in
+great detail and there is some expectation of knowledge of the basics
+of dbic
+
+The basic skeleton of the talk is as follows:
+
+	- Who am i?
+	- Why DBIx::Class
+	- Legacy Schema
+		+ Grown organically
+		+ Poorly normalised
+		+ No relational constraints
+		+ Polymorphic relationships
+		+ Poor choice of data types
+		+ SQL Antipatterns
+	- Battling the above with DBIx::Class
+		+ Generating schema classes
+		+ Adding relationships
+		+ Solving joins on polymorphic relationships
+		+ Filtering columns
+		+ Fixing data types with filters
+		+ Virtual views and reports
+		+ Query tracing and profiling
+	- Questions?
+
+Other topics touched upon may include:
+
+	- MVC
+		+ Thin controllers
+		+ Fat model
+
+I expect the talk to last around 15 minutes, and with a Q&A at the end
+that should take it to the 20 minute mark. The full presentation and
+example code will available for view/fork/contribution on github.

@@ -1,0 +1,11 @@
+A talk planned for 2016 YAPC::{NA,EU} and possibly others
+
+To view the talk slides you will need to install the module App::revealup
+
+Then run:
+
+revealup server presentation.md --port 5000 --theme night --transition none
+
+Slides are then available at http://localhost:5000
+
+examples are in the bin/ directory
