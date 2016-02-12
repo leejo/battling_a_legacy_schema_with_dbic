@@ -9,7 +9,7 @@ YAPC::{NA,EU} 2016
 
 ![me](img/card.jpg)
 
-[Slides](http://leejo.github.io/code)
+[http://leejo.github.io/code](http://leejo.github.io/code)
 
 ---
 ## Why DBIx::Class?
