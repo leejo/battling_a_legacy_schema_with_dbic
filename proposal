@@ -1,4 +1,4 @@
-This talk aims to give explain some lessons learnt and tips on using
+This talk aims to give/explain some lessons learnt and tips on using
 DBIx::Class with a legacy database schema.
 
 An overview of DBIx::Class will be given, although this will not be in
