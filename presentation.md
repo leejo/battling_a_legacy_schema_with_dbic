@@ -1,3 +1,6 @@
+<section data-markdown="presentation.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n" data-separator-notes="^Note:"></section>
+
+
 Battling a Legacy Schema With DBIx::Class
 
 [Lee Johnson](http://leejo.github.io)
@@ -14,6 +17,22 @@ YAPC::{NA,EU} 2016
 ---
 ## Why DBIx::Class?
 
+For any non-trivial application you're going to write a model anyway.
+
+Most trivial applications turn into non-trivial applications.
+
+So "don't leak the abstraction"
+
+DBIx::Class offers many useful features, as we shall see.
+
+Note:
+- quote from Ovid
+- no writing same SQL over and over
+- concentrate on the business logic
+- objects
+
+---
+### More about that Model
 
 ---
 ## Legacy Schema?
@@ -59,4 +78,4 @@ YAPC::{NA,EU} 2016
 ---
 ## Questions?
 
-Links to more information
+Links and resources:
