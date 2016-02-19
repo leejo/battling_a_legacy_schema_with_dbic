@@ -8,4 +8,4 @@ revealup server presentation.md --port 5000 --theme night --transition none
 
 Slides are then available at http://localhost:5000
 
-examples are in the bin/ directory
+examples are in the examples/ directory
