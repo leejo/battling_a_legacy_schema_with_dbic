@@ -34,6 +34,8 @@ Note:
 ---
 ### More about that Model
 
+The ORM isn't your model, it *helps* your model.
+
 <section>
     <p class="fragment"> MVC </p>
     <p class="fragment"> <font size=40>M</font>V<font size=5>C</font> </p>
