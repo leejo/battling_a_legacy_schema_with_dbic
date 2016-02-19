@@ -20,7 +20,7 @@ use DBIx::Class::UnicornLogger;
 my $pp = DBIx::Class::UnicornLogger->new({
 	tree             => { profile => 'console' },
 	profile          => 'console',
-	format           => '[%d]\[%F:%L]%n ** %m',
+	format           => '[%d]%n ** %m',
 	multiline_format => ' -- %m',
 });
 
