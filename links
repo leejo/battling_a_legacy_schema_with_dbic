@@ -1,4 +1,17 @@
+### When / Why?
+
 https://programmers.stackexchange.com/questions/304520/when-should-i-use-perls-dbixclass
 https://twit.tv/shows/floss-weekly/episodes/363
+
+### Logging?
+
 https://metacpan.org/pod/DBIx::Class::QueryLog
 https://metacpan.org/pod/DBIx::Class::UnicornLogger
+
+### High Level View:
+
+11:31 <@ribasushi> k-man: if you have an existing gnarly
+                   database you want to wrap your head
+                   around, vanstyn_'s rdbic is a superb
+                   tool building on top of the ecosystem:
+http://www.catalystframework.org/calendar/2014/16#Examples
