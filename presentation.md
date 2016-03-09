@@ -1,6 +1,3 @@
-<section data-markdown="presentation.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n" data-separator-notes="^Note:"></section>
-
-
 Battling a Legacy Schema With DBIx::Class
 
 [Lee Johnson](http://leejo.github.io)
@@ -36,11 +33,9 @@ Note:
 
 The ORM isn't your model, it *helps* your model.
 
-<section>
-    <p class="fragment"> MVC </p>
-    <p class="fragment"> <font size=40>M</font>V<font size=5>C</font> </p>
-    <p class="fragment"> <font size=5>O</font><font size=40>M</font>V<font size=5>C</font> </p>
-</section>
+<p class="fragment"> MVC </p>
+<p class="fragment"> <font size=40>M</font>V<font size=3>C</font> </p>
+<p class="fragment"> <font size=5>O</font><font size=40>M</font>V<font size=3>C</font> </p>
 
 Note:
 - thin controllers, fat model + ORM
@@ -65,7 +60,7 @@ You're controllers are then not coupled to the data store
 And they know nothing about the ORM
 
 Note:
-- example: ./slides/more_about_that_model.sh 17 (+ exception)
+- example: ./examples/slides/more_about_that_model.sh 17 (+ exception)
 - controller(s) not tightly coupled to the schema
 - model code makes the decisions on storage
 
@@ -94,6 +89,29 @@ catch_default sub {
 ---
 ## Legacy Schema?
 
+<p class="fragment"> Anything you didn't design yourself, right? </p>
+<p class="fragment"> Well, anything that's grown organically. </p>
+<p class="fragment"> Or used older tech and didn't keep up. </p>
+<p class="fragment"> Maybe just full of technical debt? </p>
+<p class="fragment"> Technical debt is *hard* to fix in your data store. </p>
+<p class="fragment"> It's more like a mortgage on your stack. </p>
+
+Note:
+- tech debt: because often the code is tightly coupled to it
+- mortgage: takes a long time to pay off, makes moving difficult, missing a payment can be catastrophic.
+- a well designed schema: you can just about point DBIx::Class at it and run
+- but we can still use dbic with a legacy schema, just needs some help
+- following: how we can abstract problems away to ease paying off that debt.
+
+---
+## Relationships (or lack thereof)
+
+Note:
+- there was once an aversion to these
+- "they're slow"
+- "they don't give us anything"
+- "they make queries over complicated"
+- The R in "RDBMS" is important
 
 ---
 ## Generating schema classes
@@ -124,11 +142,16 @@ catch_default sub {
 
 
 ---
+## Gotchas
+
+
+---
 ## In Summary
 
++ Thin controllers, fat model
+    - The ORM is *not* your model
+    - Use it *in* your model
 + Foo
-    - Bar
-    - Baz
 + Boz
 + Biz
 
