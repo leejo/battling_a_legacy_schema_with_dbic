@@ -1,3 +1,6 @@
 run:
 
 DBIC_TRACE=1 RESORT_DB=db/resorts.db morbo script/resorts.pl
+
+curl -v -XGET http://127.0.0.1:3000/resorts/1 | json_xs
+curl -v -XGET http://127.0.0.1:3000/resorts/1/pistes | json_xs

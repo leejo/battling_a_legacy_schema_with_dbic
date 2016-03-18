@@ -95,6 +95,7 @@ catch_default sub {
 <p class="fragment"> Maybe just full of technical debt? </p>
 <p class="fragment"> Technical debt is *hard* to fix in your data store. </p>
 <p class="fragment"> It's more like a mortgage on your stack. </p>
+<p class="fragment"> So lets look at some examples. </p>
 
 Note:
 - tech debt: because often the code is tightly coupled to it
@@ -102,6 +103,17 @@ Note:
 - a well designed schema: you can just about point DBIx::Class at it and run
 - but we can still use dbic with a legacy schema, just needs some help
 - following: how we can abstract problems away to ease paying off that debt.
+
+---
+
+![Example](img/resorts.png)
+
+A Ski Resort
+
+Note:
+- This is not the "legacy" schema
+- This is done "right" (potentially subjective)
+- Simple enough but also can have complexity
 
 ---
 ## Relationships (or lack thereof)

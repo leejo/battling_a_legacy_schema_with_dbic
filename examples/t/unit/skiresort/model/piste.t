@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use Test::Most;
+use Test::Exception;
 
 use_ok( 'SkiResort::Model::Piste' );
 
@@ -19,24 +20,19 @@ can_ok(
 	qw/
 		id
 		name
-		start_altitude
-		end_altitude
-		length
 		grade
 		last_modified
 	/,
 );
 
 is( $Piste->name,'Ruvines','->name' );
-ok( ! $Piste->start_altitude,'->start_altitude' );
-ok( ! $Piste->end_altitude,'->end_altitude' );
-ok( ! $Piste->length,'->length' );
-is( $Piste->grade,'A','->grade' );
+is( $Piste->grade,'Advanced','->grade' );
 isa_ok( $Piste->last_modified,'DateTime','->last_modified' );
 
 ok( ! $Piste->beginner,'->beginner' );
 ok( ! $Piste->intermediate,'->intermediate' );
 ok( $Piste->advanced,'->advanced' );
+ok( ! $Piste->expert,'->expert' );
 ok( ! $Piste->freeride,'->freeride' );
 
 cmp_deeply(
@@ -44,13 +40,20 @@ cmp_deeply(
 	{
 		id             => 1,
 		name           => 'Ruvines',
-		start_altitude => undef,
-		end_altitude   => undef,
-		length         => undef,
-		grade          => 'A',
+		grade          => 'Advanced',
 		last_modified  => ignore(),
 	},
 	'TO_JSON'
+);
+
+throws_ok(
+	sub { SkiResort::Model::Piste->new( id => 999 )->name },
+	"SkiResort::Exception::Database",
+);
+
+throws_ok(
+	sub { SkiResort::Model::Piste->new->name },
+	"SkiResort::Exception::Database",
 );
 
 done_testing();

@@ -26,14 +26,13 @@ __PACKAGE__->add_columns(
     default_value => \"null",
     is_nullable   => 1,
   },
-  "start_altitude",
-  { data_type => "float", default_value => \"null", is_nullable => 1 },
-  "end_altitude",
-  { data_type => "float", default_value => \"null", is_nullable => 1 },
-  "length",
-  { data_type => "float", default_value => \"null", is_nullable => 1 },
-  "grade",
-  { data_type => "char( 1 )", default_value => \"null", is_nullable => 1 },
+  "piste_rating_id",
+  {
+    data_type      => "integer",
+    default_value  => \"null",
+    is_foreign_key => 1,
+    is_nullable    => 1,
+  },
   "last_modified",
   {
     data_type     => "timestamp",
@@ -43,6 +42,23 @@ __PACKAGE__->add_columns(
   },
 );
 __PACKAGE__->set_primary_key("id");
+__PACKAGE__->has_many(
+  "piste_installations",
+  "SkiResort::Model::Schema::Result::PisteInstallation",
+  { "foreign.piste_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+__PACKAGE__->belongs_to(
+  "piste_rating",
+  "SkiResort::Model::Schema::Result::PisteRating",
+  { id => "piste_rating_id" },
+  {
+    is_deferrable => 0,
+    join_type     => "LEFT",
+    on_delete     => "CASCADE",
+    on_update     => "CASCADE",
+  },
+);
 __PACKAGE__->belongs_to(
   "resort",
   "SkiResort::Model::Schema::Result::Resort",
@@ -50,14 +66,14 @@ __PACKAGE__->belongs_to(
   {
     is_deferrable => 0,
     join_type     => "LEFT",
-    on_delete     => "NO ACTION",
-    on_update     => "NO ACTION",
+    on_delete     => "CASCADE",
+    on_update     => "CASCADE",
   },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07036 @ 2016-01-14 16:20:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:oU4i5xGpWw26h9Y9gDQgCg
+# Created by DBIx::Class::Schema::Loader v0.07036 @ 2016-03-18 16:34:17
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TGqQcPm4THPfxj7MYtovYg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -64,13 +64,21 @@ sub pistes {
 
 	my @pistes;
 
-	foreach my $row ( $self->dbic->rs( 'Piste' )->search({
-		resort_id => $self->id,
-	})->all ) {
-		push( @pistes,SkiResort::Model::Piste->new( $row->get_inflated_columns ) );
+	foreach my $row (
+		$self->dbic->rs( 'Piste' )->search(
+			{ resort_id => $self->id },
+			{ prefetch => [ qw/ piste_rating / ] },
+		)->all
+	) {
+		push(
+			@pistes,SkiResort::Model::Piste->new(
+				$row->get_inflated_columns,
+				grade => $row->piste_rating->rating,
+			)
+		);
 	}
 
-	return [ @pistes ];
+	return @pistes;
 }
 
 sub installations {
@@ -87,10 +95,11 @@ sub installations {
 	return [ @installations ];
 }
 
-sub number_of_beginner_slopes     { grep { $_->beginner } @{ shift->pistes } }
-sub number_of_intermediate_slopes { grep { $_->intermediate } @{ shift->pistes } }
-sub number_of_advanced_slopes     { grep { $_->advanced } @{ shift->pistes } }
-sub number_of_freeride_slopes     { grep { $_->freeride } @{ shift->pistes } }
+sub number_of_beginner_slopes     { grep { $_->beginner } shift->pistes }
+sub number_of_intermediate_slopes { grep { $_->intermediate } shift->pistes }
+sub number_of_advanced_slopes     { grep { $_->advanced } shift->pistes }
+sub number_of_expert_slopes       { grep { $_->expert } shift->pistes }
+sub number_of_freeride_slopes     { grep { $_->freeride } shift->pistes }
 
 sub TO_JSON {
 	my ( $self ) = @_;

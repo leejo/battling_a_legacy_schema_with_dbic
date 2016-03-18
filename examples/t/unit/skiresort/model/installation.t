@@ -36,6 +36,16 @@ cmp_deeply(
 	'TO_JSON'
 );
 
+throws_ok(
+	sub { SkiResort::Model::Installation->new( id => 999 )->name },
+	"SkiResort::Exception::Database",
+);
+
+throws_ok(
+	sub { SkiResort::Model::Installation->new->name },
+	"SkiResort::Exception::Database",
+);
+
 done_testing();
 
 # vim: ts=4:sw=4:noet

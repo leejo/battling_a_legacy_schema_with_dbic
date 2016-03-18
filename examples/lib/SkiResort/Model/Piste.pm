@@ -18,7 +18,6 @@ has 'id' => (
 
 my %attributes = (
 	Maybe[Str]         => [ qw/ name grade / ],
-	Maybe[Num]         => [ qw/ start_altitude end_altitude length / ],
 	Maybe[$SQLiteDate] => [ qw/ last_modified / ],
 );
 
@@ -46,12 +45,12 @@ sub _get_piste {
 
 	my $model = $self->dbic;
 
-	if ( my $piste = $model->rs( 'Piste' )->find( $self->id ) ) {
+	if ( my $piste = $model->rs( 'Piste' )->find(
+		$self->id,
+		{ prefetch => [ qw/ piste_rating / ] },
+	) ) {
 		$self->name( $piste->name );
-		$self->start_altitude( $piste->start_altitude );
-		$self->end_altitude( $piste->end_altitude );
-		$self->length( $piste->length );
-		$self->grade( $piste->grade );
+		$self->grade( $piste->piste_rating->rating );
 		$self->last_modified( $piste->last_modified );
 	}
 	else {
@@ -61,10 +60,11 @@ sub _get_piste {
 	return $self->{$attribute};
 }
 
-sub beginner     { return shift->grade eq 'B' };
-sub intermediate { return shift->grade eq 'I' };
-sub advanced     { return shift->grade eq 'A' };
-sub freeride     { return shift->grade eq 'F' };
+sub beginner     { return shift->grade eq 'Easy' };
+sub intermediate { return shift->grade eq 'Intermediate' };
+sub advanced     { return shift->grade eq 'Advanced' };
+sub expert       { return shift->grade eq 'Expert' };
+sub freeride     { return shift->grade eq 'Off-piste' };
 
 sub TO_JSON {
 	my ( $self ) = @_;
@@ -72,9 +72,6 @@ sub TO_JSON {
 	return {
 		id             => $self->id,
 		name           => $self->name,
-		start_altitude => $self->start_altitude,
-		end_altitude   => $self->end_altitude,
-		length         => $self->length,
 		grade          => $self->grade,
 		last_modified  => $self->last_modified->iso8601,
 	};
