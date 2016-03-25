@@ -1,0 +1,9 @@
+requires 'Moo';
+requires 'Types::Standard';
+requires 'DateTime::Format::SQLite';
+requires 'Exporter::Easy';
+requires 'Throwable';
+requires 'DBIx::Class';
+requires 'DBIx::Class::UnicornLogger';
+requires 'Mojolicious';
+requires 'Try::Tiny::SmartCatch';

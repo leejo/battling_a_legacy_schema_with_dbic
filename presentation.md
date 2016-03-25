@@ -55,7 +55,7 @@ Like so:
 SkiResort::Model::Piste->new( id => 17 )->name;
 ```
 
-You're controllers are then not coupled to the data store
+Your controllers are then not coupled to the data store
 
 And they know nothing about the ORM
 

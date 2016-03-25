@@ -1,3 +1,7 @@
+install deps:
+
+cpanm `cpanfile-dump`
+
 run:
 
 DBIC_TRACE=1 RESORT_DB=db/resorts.db morbo script/resorts.pl
