@@ -24,6 +24,7 @@ DBIx::Class offers many useful features, as we shall see.
 
 Note:
 - quote from Ovid
+- my first intro to dbic, don't want to go back
 - no writing same SQL over and over
 - concentrate on the business logic
 - objects
@@ -110,10 +111,34 @@ Note:
 
 A Ski Resort
 
+Simple, [right?](img/villars_piste_map.pdf)
+
 Note:
-- This is not the "legacy" schema
 - This is done "right" (potentially subjective)
-- Simple enough but also can have complexity
+- Show villars_piste_map.pdf
+- Because, for example, resort can be made of other resorts
+- And a piste can be made of of many other pistes
+- And you can have lifts that link resorts
+- But keeping this simple enough for the examples
+- And this is not the "legacy" schema...
+
+---
+## High Level Overview
+
+```
+11:31 <@ribasushi> if you have an existing gnarly database you want to wrap your head
+                   around, vanstyn_'s rdbic is a superb tool building on top of the
+                   ecosystem: http://www.catalystframework.org/calendar/2014/16
+```
+
+[RapidApp](https://github.com/RapidApp/yn2015)
+
+```
+rdbic.pl examples/db/legacy/resorts_legacy.db
+```
+
+Note:
+- example: ./examples/slides/high_level_overview.sh
 
 ---
 ## Relationships (or lack thereof)

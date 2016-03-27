@@ -10,11 +10,9 @@ https://metacpan.org/pod/DBIx::Class::UnicornLogger
 
 ### High Level View:
 
-11:31 <@ribasushi> k-man: if you have an existing gnarly
-                   database you want to wrap your head
-                   around, vanstyn_'s rdbic is a superb
-                   tool building on top of the ecosystem:
-http://www.catalystframework.org/calendar/2014/16#Examples
+11:31 <@ribasushi> if you have an existing gnarly database you want to wrap your head
+                   around, vanstyn_'s rdbic is a superb tool building on top of the ecosystem:
+                   http://www.catalystframework.org/calendar/2014/16#Examples
 
 ### Deployment?
 
