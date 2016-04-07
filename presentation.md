@@ -234,13 +234,16 @@ __PACKAGE__->belongs_to(
 Which gives us:
 
 ```perl
-$model->resultset( "ResortItem" )->first->resort->name;
+$model->resultset( "ResortItem" )
+	->first->resort->name;
 ```
 
 And of course:
 
 ```perl
-$model->resultset( "ResortItem" )->search( {},{ prefetch => [ qw/ resort / ] );
+$model->resultset( "ResortItem" )->search(
+	{},{ prefetch => [ qw/ resort / ] }
+)->first->resort->name;
 ```
 
 Note:
