@@ -23,7 +23,7 @@ So "don't leak the abstraction"
 DBIx::Class offers many useful features, as we shall see.
 
 Note:
-- quote from Ovid
+- quoting Ovid, who was quoting Joel Spolsky
 - my first intro to dbic, don't want to go back
 - no writing same SQL over and over
 - concentrate on the business logic
@@ -70,7 +70,7 @@ Note:
 
 And you can better utilise exceptions:
 
-```
+```perl
 try sub {
 	...
 	my $piste = SkiResort::Model::Piste->new( id => $piste_id );
@@ -153,10 +153,101 @@ Note:
 ---
 ## Generating schema classes
 
+```bash
+#!/bin/bash
+
+set -e
+set -x
+
+folder=$1
+db_path=$2
+overwrite=$3
+
+dbicdump \
+        -o debug=1 -o generate_pod=0 -o preserve_case=1 \
+        -o dump_directory=$folder \
+        -o components="[qw{InflateColumn::DateTime}]" \
+        -o overwrite_modifications=$overwrite \
+        -o datetime_timezone=UTC \
+                'SkiResort::Model::LegacySchema' \
+                'dbi:SQLite:dbname='$db_path''
+```
+
+Note:
+- cd examples; sh db/gen_dbic_classes.sh lib db/legacy/resorts_legacy.db 1
+- useful to have this as a script to rerun as required
+
+---
+## Generating schema classes
+
+```perl
+use utf8;
+package SkiResort::Model::LegacySchema::Result::ResortItem;
+
+# Created by DBIx::Class::Schema::Loader
+# DO NOT MODIFY THE FIRST PART OF THIS FILE
+
+use strict;
+use warnings;
+
+use base 'DBIx::Class::Core';
+__PACKAGE__->load_components("InflateColumn::DateTime");
+__PACKAGE__->table("resort_item");
+__PACKAGE__->add_columns(
+  "resort_id",
+  { data_type => "integer", default_value => \"null", is_nullable => 1 },
+  "item_source",
+  { data_type => "varchar( 255 )", is_nullable => 1 },
+  "item_id",
+  { data_type => "integer", is_nullable => 0 },
+);
+
+
+# Created by DBIx::Class::Schema::Loader v0.07036 @ 2016-04-07 14:16:33
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:kOaW4xm7IT+Y3qVDDBy2hg
+
+# You can replace this text with custom code or comments, and it will be
+# preserved on regeneration
+1;
+```
+
+Note:
+- gives us the base but we need to add relationships
+- the relationships are where we can really use the power of dbic
 
 ---
 ## Adding relationships
 
+```perl
+# You can replace this text with custom code or comments, and it will be
+# preserved on regeneration
+
+__PACKAGE__->belongs_to(
+  "resort",
+  "SkiResort::Model::LegacySchema::Result::Resort",
+  { id => "resort_id" },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
+);
+
+```
+
+Which gives us:
+
+```perl
+$model->resultset( "ResortItem" )->first->resort->name;
+```
+
+And of course:
+
+```perl
+$model->resultset( "ResortItem" )->search( {},{ prefetch => [ qw/ resort / ] );
+```
+
+Note:
+- example: ./examples/slides/adding_relationships.sh
+- probably only want to add relationships as you need them
+- i.e. no point in spending time adding them all
+- but prefetch is an essential concept in optimisation
 
 ---
 ## Solving joins on polymorphic relationships
