@@ -117,10 +117,22 @@ Note:
 - This is done "right" (potentially subjective)
 - Show villars_piste_map.pdf
 - Because, for example, resort can be made of other resorts
-- And a piste can be made of of many other pistes
+- And a piste can be made of other pistes
 - And you can have lifts that link resorts
 - But keeping this simple enough for the examples
 - And this is not the "legacy" schema...
+
+---
+
+The "legacy" version:
+
+![Legacy Version](img/resorts_legacy.png)
+
+Eh, not so good.
+
+Note:
+- This is the legacy schema
+- Purposefully simplistic
 
 ---
 ## High Level Overview
@@ -253,7 +265,32 @@ Note:
 - but prefetch is an essential concept in optimisation
 
 ---
-## Solving joins on polymorphic relationships
+## Adding relationships
+
+[DBIx::Class::Relationship](https://metacpan.org/pod/DBIx::Class::Relationship)
+
+ * `might_have` = 0 .. 1
+ * `has_one`    = 1 .. 1
+ * `has_many`   = 1 .. n
+ * `belongs_to` = The right hand side of the above:
+  * If a Resort `has_many` Piste(s) then a Piste `belongs_to` a Resort
+ * (`many_to_many` = [convenience](https://metacpan.org/pod/distribution/DBIx-Class/lib/DBIx/Class/Manual/Glossary.pod#Relationship-bridge))
+
+---
+## Polymorphic relationships?
+
+![Polymorphic relationship](img/resorts_legacy_pr.png)
+
+Note:
+- if you've ever seen a table that has a column to store the name of another table, then...
+- seems like an elegant solution, but:
+- can't enforce referential integrity in the storage engine
+- pushes the relational implementation into your application code
+- OK, but what if we have one of these and we can't yet fix it?
+
+---
+## Polymorphic relationships?
+
 
 
 ---
