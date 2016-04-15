@@ -26,4 +26,14 @@ __PACKAGE__->set_primary_key("id");
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
+
+__PACKAGE__->has_many(
+  resort_items => 'SkiResort::Model::LegacySchema::Result::ResortItem',
+  { 'foreign.resort_id' => 'self.id' }
+);
+
+__PACKAGE__->many_to_many(
+  'pistes' => 'resort_items' => 'piste'
+);
+
 1;

@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -e -x -u
+
 rm resorts.db
 for file in $(ls -1 updates)
 do

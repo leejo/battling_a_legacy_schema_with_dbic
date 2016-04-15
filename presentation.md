@@ -14,18 +14,24 @@ YAPC::{NA,EU} 2016
 ---
 ## Why DBIx::Class?
 
-For any non-trivial application you're going to write a model anyway.
+<p class="fragment"> For any non-trivial application you're going to write a model. </p>
 
-Most trivial applications turn into non-trivial applications.
+<p class="fragment"> Most trivial applications turn into non-trivial applications. </p>
 
-So "don't leak the abstraction"
+<p class="fragment"> And you're probably sick of writing trivial SQL. </p>
 
-DBIx::Class offers many useful features, as we shall see.
+<p class="fragment"> So your trivial SQL statements ... right? </p>
+
+<p class="fragment"> "don't leak the abstraction" </p>
+
+<p class="fragment"> DBIx::Class offers many useful features, as we shall see. </p>
+
+<p class="fragment"> Other ORM's are available. </p>
 
 Note:
-- quoting Ovid, who was quoting Joel Spolsky
 - my first intro to dbic, don't want to go back
 - no writing same SQL over and over
+- quoting Ovid, who was quoting Joel Spolsky
 - concentrate on the business logic
 - objects
 
@@ -153,6 +159,9 @@ Note:
 - example: ./examples/slides/high_level_overview.sh
 
 ---
+### Confusing Terminology
+
+---
 ## Relationships (or lack thereof)
 
 Note:
@@ -271,10 +280,14 @@ Note:
 
  * `might_have` = 0 .. 1
  * `has_one`    = 1 .. 1
- * `has_many`   = 1 .. n
+ * `has_many`   = 0 .. n
  * `belongs_to` = The right hand side of the above:
   * If a Resort `has_many` Piste(s) then a Piste `belongs_to` a Resort
  * (`many_to_many` = [convenience](https://metacpan.org/pod/distribution/DBIx-Class/lib/DBIx/Class/Manual/Glossary.pod#Relationship-bridge))
+
+Note:
+- belongs_to is really the one true representative relationship
+- as foreign keys in a schema definition only ever say what they "belong to"
 
 ---
 ## Polymorphic relationships?
@@ -291,15 +304,114 @@ Note:
 ---
 ## Polymorphic relationships?
 
+```perl
+package SkiResort::Model::LegacySchema::Result::ResortItem;
 
+...
+
+__PACKAGE__->set_primary_key( "resort_id","item_source","item_id" );
+
+__PACKAGE__->belongs_to(
+  piste => 'SkiResort::Model::LegacySchema::Result::Piste',
+  sub {
+    my ( $args ) = @_;
+
+    return {
+      "$args->{self_alias}.item_source" => 'piste',
+      "$args->{self_alias}.item_id"   => { -ident => "$args->{foreign_alias}.id" },
+    };
+  },
+);
+```
+
+Allows:
+
+```perl
+$model->resultset( "PisteItem" )->search(
+    { item_source => 'piste' },
+    { prefetch => [ qw/ piste / ] }
+)->first->piste->name;
+```
+
+Note:
+- example: ./examples/slides/polymorphic_relationships.sh
+
+---
+## Polymorphic relationships?
+
+Using `many_to_many` bridge having added the previous belongs_to:
+
+```perl
+package SkiResort::Model::LegacySchema::Result::Resort;
+
+...
+
+__PACKAGE__->has_many(
+  resort_items => 'SkiResort::Model::LegacySchema::Result::ResortItem',
+  { 'foreign.resort_id' => 'self.id' }
+);
+
+__PACKAGE__->many_to_many(
+  'pistes' => 'resort_items' => 'piste'
+);
+```
+
+Allows:
+
+```perl
+$model->resultset( "Resort" )->first->pistes->first->name;
+```
+
+Note:
+- example: ./examples/slides/polymorphic_relationships_mtm.sh
+- note difference: ->first->piste**s**->first->name
+- compared to: ->first->piste->name
+
+---
+## Polymorphic relationships?
+
+And if you have many of these:
+
+```perl
+package SkiResort::Model::LegacySchema::Result::ResortItem;
+
+...
+
+foreach my $source ( qw/ piste lift / ) {
+
+  __PACKAGE__->belongs_to(
+    $source => 'SkiResort::Model::LegacySchema::Result::' . ucfirst( $source ),
+    sub {
+      my ( $args ) = @_;
+
+      return {
+        "$args->{self_alias}.item_source" => $source,
+        "$args->{self_alias}.item_id"   => { -ident => "$args->{foreign_alias}.id" },
+      };
+    },
+  );
+
+}
+```
+
+Note:
+- example: ./examples/slides/polymorphic_relationships_lift.sh
 
 ---
 ## Filtering columns
 
+Note:
+- we can both inflate and *deflate*
+- e.g. ensuring data is encrypted
+- DBIx::Class::InflateColumn::*
+- some of these are core to DBIx::Class, e.g. InflateColumn::DateTime
 
 ---
 ## Fixing data types with filters
 
+
+Note:
+- DBIx::Class::FilterColumn
 
 ---
 ## Virtual views and reports

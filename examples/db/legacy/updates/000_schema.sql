@@ -5,8 +5,8 @@ CREATE TABLE resort (
 );
 
 CREATE TABLE resort_item (
-	resort_id     INTEGER DEFAULT NULL,
-	item_source   VARCHAR( 255 ),
+	resort_id     INTEGER NOT NULL,
+	item_source   VARCHAR( 255 ) NOT NULL,
 	item_id       INTEGER NOT NULL
 );
 

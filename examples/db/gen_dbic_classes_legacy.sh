@@ -12,5 +12,5 @@ dbicdump \
 	-o components="[qw{InflateColumn::DateTime}]" \
 	-o overwrite_modifications=$overwrite \
 	-o datetime_timezone=UTC \
-		'SkiResort::Model::Schema' \
+		'SkiResort::Model::LegacySchema' \
 		'dbi:SQLite:dbname='$db_path''

@@ -20,7 +20,7 @@ The basic skeleton of the talk is as follows:
 		+ Generating schema classes
 		+ Adding relationships
 		+ Solving joins on polymorphic relationships
-		+ Filtering columns
+		+ Inflating columns
 		+ Fixing data types with filters
 		+ Virtual views and reports
 		+ Query tracing and profiling
