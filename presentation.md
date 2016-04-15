@@ -159,7 +159,16 @@ Note:
 - example: ./examples/slides/high_level_overview.sh
 
 ---
-### Confusing Terminology
+## Confusing Terminology
+
+<p class="fragment"> If you don't leak the abstraction then this becomes an non-issue. </p>
+
+<p class="fragment"> Because your `SkiResort::Model::Piste` class could be querying a table named potato. </p>
+
+<p class="fragment"> But if doesn't matter, the confusing terminology is safely contained and you only ever interact with the correctly named class. </p>
+
+Note:
+- a re-purposed schema
 
 ---
 ## Relationships (or lack thereof)
