@@ -161,7 +161,7 @@ Note:
 ---
 ## Confusing Terminology
 
-<p class="fragment"> If you don't leak the abstraction then this becomes an non-issue. </p>
+<p class="fragment"> If you don't leak the abstraction then this becomes a non-issue. </p>
 
 <p class="fragment"> Because your `SkiResort::Model::Piste` class could be querying a table named potato. </p>
 
