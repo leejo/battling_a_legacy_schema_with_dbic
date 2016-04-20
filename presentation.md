@@ -375,6 +375,7 @@ Note:
 - example: ./examples/slides/polymorphic_relationships_mtm.sh
 - note difference: ->first->piste**s**->first->name
 - compared to: ->first->piste->name
+- can't use prefetch (many_to_many isn't a relationship)
 
 ---
 ## Polymorphic relationships?
@@ -407,13 +408,13 @@ Note:
 - example: ./examples/slides/polymorphic_relationships_lift.sh
 
 ---
-## Filtering columns
+## Inflating / Filtering columns
 
 Note:
 - we can both inflate and *deflate*
 - e.g. ensuring data is encrypted
 - DBIx::Class::InflateColumn::*
-- some of these are core to DBIx::Class, e.g. InflateColumn::DateTime
+- a couple of these are core to DBIx::Class, e.g. InflateColumn::DateTime
 
 ---
 ## Fixing data types with filters
