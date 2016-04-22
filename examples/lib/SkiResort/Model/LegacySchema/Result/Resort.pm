@@ -36,4 +36,11 @@ __PACKAGE__->many_to_many(
   'pistes' => 'resort_items' => 'piste'
 );
 
+__PACKAGE__->load_components( "FilterColumn" );
+
+__PACKAGE__->filter_column( active => {
+  filter_to_storage   => sub { return $_[1] ? 'Y' : 'N'; },
+  filter_from_storage => sub { return defined $_[1] && $_[1] =~ /Y/i ? 1 : 0; },
+});
+
 1;

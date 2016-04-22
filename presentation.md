@@ -36,7 +36,7 @@ Note:
 - objects
 
 ---
-### More about that Model
+### More About That Model
 
 The ORM isn't your model, it *helps* your model.
 
@@ -48,7 +48,7 @@ Note:
 - thin controllers, fat model + ORM
 
 ---
-### More about that Model
+### More About That Model
 
 Abstract this away into your model:
 
@@ -72,7 +72,7 @@ Note:
 - model code makes the decisions on storage
 
 ---
-### More about that Model
+### More About That Model
 
 And you can better utilise exceptions:
 
@@ -181,7 +181,7 @@ Note:
 - The R in "RDBMS" is important
 
 ---
-## Generating schema classes
+## Generating Schema Classes
 
 ```bash
 #!/bin/bash
@@ -208,7 +208,7 @@ Note:
 - useful to have this as a script to rerun as required
 
 ---
-## Generating schema classes
+## Generating Schema Classes
 
 ```perl
 use utf8;
@@ -246,7 +246,7 @@ Note:
 - the relationships are where we can really use the power of dbic
 
 ---
-## Adding relationships
+## Adding Relationships
 
 ```perl
 # You can replace this text with custom code or comments, and it will be
@@ -283,7 +283,7 @@ Note:
 - but prefetch is an essential concept in optimisation
 
 ---
-## Adding relationships
+## Adding Relationships
 
 [DBIx::Class::Relationship](https://metacpan.org/pod/DBIx::Class::Relationship)
 
@@ -299,7 +299,7 @@ Note:
 - as foreign keys in a schema definition only ever say what they "belong to"
 
 ---
-## Polymorphic relationships?
+## Polymorphic Relationships?
 
 ![Polymorphic relationship](img/resorts_legacy_pr.png)
 
@@ -311,7 +311,7 @@ Note:
 - OK, but what if we have one of these and we can't yet fix it?
 
 ---
-## Polymorphic relationships?
+## Polymorphic Relationships?
 
 ```perl
 package SkiResort::Model::LegacySchema::Result::ResortItem;
@@ -346,7 +346,7 @@ Note:
 - example: ./examples/slides/polymorphic_relationships.sh
 
 ---
-## Polymorphic relationships?
+## Polymorphic Relationships?
 
 Using `many_to_many` bridge having added the previous belongs_to:
 
@@ -378,7 +378,7 @@ Note:
 - can't use prefetch (many_to_many isn't a relationship)
 
 ---
-## Polymorphic relationships?
+## Polymorphic Relationships?
 
 And if you have many of these:
 
@@ -408,27 +408,106 @@ Note:
 - example: ./examples/slides/polymorphic_relationships_lift.sh
 
 ---
-## Inflating / Filtering columns
+## Fixing Column Data
+
+---
+## Inflating Column Data
+
+We can fix data and/or get objects from column data.
+
+[DateTime](https://metacpan.org/pod/DBIx::Class::InflateColumn::DateTime) - You'll almost certainly want this one:
+
+```perl
+__PACKAGE__->load_components(qw/InflateColumn::DateTime/);
+```
+
+When `$column` is a `date`, `timestamp` or `datetime` data type:
+
+```perl
+$model->resultset( "Foo" )->first->$column->subtract->( months => 1 )->ymd;
+```
+
+<p class="fragment">`DATE_FORMAT(DATE_SUB(c,INTERVAL 1 MONTH),'%Y-%m-%d')`</p>
+
+<p class="fragment">Stop using your RDMS to do date calculations / format.</p>
 
 Note:
 - we can both inflate and *deflate*
 - e.g. ensuring data is encrypted
 - DBIx::Class::InflateColumn::*
 - a couple of these are core to DBIx::Class, e.g. InflateColumn::DateTime
+  - has ways to handle timezones, locale, etc
 
 ---
-## Fixing data types with filters
+## Fixing Column Data With Filters
 
+The `resort` table contains an `active` column that is a `char(1)`.
+
+It should be a `boolean`, so:
+
+```perl
+package SkiResort::Model::LegacySchema::Result::Resort;
+
+...
+
+__PACKAGE__->load_components( "FilterColumn" );
+
+__PACKAGE__->filter_column( active => {
+	filter_to_storage   => sub { return $_[1] ? 'Y' : 'N'; },
+	filter_from_storage => sub { return defined $_[1] && $_[1] =~ /Y/i ? 1 : 0; },
+});
+```
+
+Cleans up significantly:
+
+```perl
+if ( $model->resultset( "Resort" )->first->active ) {
+	...
+}
+```
 
 Note:
 - DBIx::Class::FilterColumn
+- ./examples/slides/fixing_column_data_with_filters.sh
 
 ---
-## Virtual views and reports
+## Fixing Column Data With Filters
+
+How about sanity checking a column that contains a CSV list?
+
+```perl
+__PACKAGE__->filter_column( column_with_csv => {
+
+	filter_to_storage   => sub { return [ split( ',',$_[1] ) ]; },
+
+	filter_from_storage => sub {
+		my ( $self,$values ) = @_;
+
+		foreach my $value ( @{ $values // [] } ) {
+			# maybe we can check $value here - if it's supposed
+			# to be a reference to another table then we could
+			# check $value exists in the child table? if not we
+			# thrown an exception
+		}
+
+		return join( ',',@{ $values // [] } ) || undef;
+	},
+});
+```
+
+Note:
+- Text::CSV
+
+---
+## Complex Queries
 
 
 ---
-## Query tracing and profiling
+## Virtual Views and Reports
+
+
+---
+## Query Tracing and Profiling
 
 
 ---
@@ -449,3 +528,6 @@ Note:
 ## Questions?
 
 Links and resources:
+
+---
+### Bonus SQL Anti-Patterns!
