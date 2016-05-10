@@ -478,9 +478,9 @@ How about sanity checking a column that contains a CSV list?
 ```perl
 __PACKAGE__->filter_column( column_with_csv => {
 
-	filter_to_storage   => sub { return [ split( ',',$_[1] ) ]; },
+	filter_from_storage   => sub { return [ split( ',',$_[1] ) ]; },
 
-	filter_from_storage => sub {
+	filter_to_storage => sub {
 		my ( $self,$values ) = @_;
 
 		foreach my $value ( @{ $values // [] } ) {
