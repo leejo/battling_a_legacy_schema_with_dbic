@@ -288,7 +288,6 @@ Note:
 [DBIx::Class::Relationship](https://metacpan.org/pod/DBIx::Class::Relationship)
 
  * `might_have` = 0 .. 1
- * `has_one`    = 1 .. 1
  * `has_many`   = 0 .. n
  * `belongs_to` = The right hand side of the above:
   * If a Resort `has_many` Piste(s) then a Piste `belongs_to` a Resort
