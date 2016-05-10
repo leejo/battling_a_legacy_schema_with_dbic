@@ -296,6 +296,8 @@ Note:
 Note:
 - belongs_to is really the one true representative relationship
 - as foreign keys in a schema definition only ever say what they "belong to"
+- many_to_many is literally an accessor, there is no metadata behind it
+- see [this](https://github.com/dbsrgits/dbix-class/blob/master/lib/DBIx/Class/Relationship/ManyToMany.pm#L64-L77)
 
 ---
 ## Polymorphic Relationships?

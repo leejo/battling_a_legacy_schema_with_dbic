@@ -14,6 +14,36 @@ https://metacpan.org/pod/DBIx::Class::UnicornLogger
                    around, vanstyn_'s rdbic is a superb tool building on top of the ecosystem:
                    http://www.catalystframework.org/calendar/2014/16#Examples
 
+### Feedback from riba
+
+10:48 <ribasushi> I really wouldn't show the
+                  m2m in "polymorphic rels"
+10:48 <ribasushi> write it out longhand via
+                  search_related
+10:48 <ribasushi> gives them instant visual
+                  "Oh! I can walk anywhere"
+10:49 <ribasushi> and reinforces the point
+                  of where the query happens
+                  (nowhere during search_*)
+
+10:51 <ribasushi> don't forget to stress
+                  that this is a toolkit
+                  rather than (more
+                  traditional ORM-like)
+                  framework
+
+10:52 <ribasushi> i.e. "If an existing
+                  gnarly query looks like it
+                  will be hard to map to
+                  DBIC - *IT PROBABLY IS*,
+                  and you should
+                  $schema->storage->dbh_do()
+                  and be in your way"
+10:52 <ribasushi> ^^ this is arguably the #1
+                  problem with newcomers to
+                  DBIC, they see it as "all
+                  or nothing"
+
 ### Deployment?
 
 DeploymentHandler
