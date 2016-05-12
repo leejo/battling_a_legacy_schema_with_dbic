@@ -44,6 +44,15 @@ https://metacpan.org/pod/DBIx::Class::UnicornLogger
                   DBIC, they see it as "all
                   or nothing"
 
+15:34 < tomboh> Lee: if you're gathering
+                ideas, it took me a good 5
+                minutes to figure out why my
+                query wasn't getting logged
+                even though the database
+                changed
+15:35 < tomboh> because dbh_do() logs via
+                DBI_TRACE, not DBIC_TRACE <- dbh_do gives access to low(er) level handle so need to look at DBI debugging options
+
 ### Deployment?
 
 DeploymentHandler
