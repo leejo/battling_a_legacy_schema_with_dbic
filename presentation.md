@@ -26,7 +26,7 @@ YAPC::{NA,EU} 2016
 
 <p class="fragment"> DBIx::Class offers many useful features, as we shall see. </p>
 
-<p class="fragment"> Other ORM's are available. </p>
+<p class="fragment"> Other ORMs/toolkits are available. </p>
 
 Note:
 - my first intro to dbic, don't want to go back
@@ -34,6 +34,7 @@ Note:
 - quoting Ovid, who was quoting Joel Spolsky
 - concentrate on the business logic
 - objects
+- DBIx::Class is not just an ORM, it's a toolkit (plugins, etc)
 
 ---
 ### More About That Model
@@ -488,7 +489,7 @@ __PACKAGE__->filter_column( column_with_csv => {
 			# maybe we can check $value here - if it's supposed
 			# to be a reference to another table then we could
 			# check $value exists in the child table? if not we
-			# thrown an exception
+			# throw an exception
 		}
 
 		return join( ',',@{ $values // [] } ) || undef;
@@ -498,22 +499,83 @@ __PACKAGE__->filter_column( column_with_csv => {
 
 Note:
 - Text::CSV
+- Manually enforce referential integrity
 
 ---
 ## Complex Queries
 
+```perl
+my $sql = "Some complex SQL we don't want to rewrite as SQL::Abstract";
+```
+
+Options:
+
+* [dbh_do](https://metacpan.org/pod/DBIx::Class::Storage::DBI#dbh_do)
+* [DBIx::Class::ResultSource::View](https://metacpan.org/pod/DBIx::Class::ResultSource::View)
+* [DBIx::Class::Report](https://metacpan.org/pod/DBIx::Class::Report)
+
+Note:
+- You *can* rewrite most (if not all) SQL, but you need to find a balance
+- DBIC_TRACE if you need to debug your SQL::Abstract struct (more later)
+- dbh_do, low level db handle (with exceptions)
+- Virtual views - views, but virtual!
+- Report - on demand virtual views (ALPHA code)
 
 ---
-## Virtual Views and Reports
+## dbh_do
 
+```perl
+my @results = $schema->storage->dbh_do(
+	sub {
+		my ( $storage,$dbh,@binds ) = @_;
+
+		# this is just pure DBI
+		$dbh->selectrow_array( "Complex SQL Here",{},@binds );
+	},
+	@binds,
+);
+```
+
+Note:
+- straight out of the docs
+- using this rather than ->_dbh or ->dbh ensures correct exception handling and reconnection
+
+---
+## Virtual Views
+
+---
+## Virtual Views Extended
+
+---
+## Reports
+
+[DBIx::Class::Report](https://metacpan.org/pod/DBIx::Class::Report)
+
+Note:
+- Just link and show perldoc here, explain ALPHA code
+- It's just building up virtual views at runtime
 
 ---
 ## Query Tracing and Profiling
 
+* `DBIC_TRACE=1`
+* `DBIC_TRACE_PROFILE=console` - for pretty printing
+* `DBI_TRACE=1` - if you're using dbh_do
+
+This is useful:
+
+```perl
+code showing calls to ->resultset to find missing prefetch
+```
+
+Note:
+- what i've been using in the examples
+- console_monochrome if you don't want colours
 
 ---
 ## Gotchas
 
+Prefetch prefetch prefetch.
 
 ---
 ## In Summary
@@ -521,7 +583,7 @@ Note:
 + Thin controllers, fat model
     - The ORM is *not* your model
     - Use it *in* your model
-+ Foo
++ DBIx::Class can be thought of as a toolkit, not just an ORM
 + Boz
 + Biz
 
