@@ -558,19 +558,40 @@ Note:
 ---
 ## Query Tracing and Profiling
 
-* `DBIC_TRACE=1`
+* `DBIC_TRACE=1` or `DBIC_TRACE=1=/path/to/output/file`
 * `DBIC_TRACE_PROFILE=console` - for pretty printing
 * `DBI_TRACE=1` - if you're using dbh_do
 
-This is useful:
-
 ```perl
-code showing calls to ->resultset to find missing prefetch
+use Carp qw/ longmess shortmess /;
+
+sub resultset {
+	my ( $self,$table ) = @_;
+
+	if ( my $trace = $ENV{DBIC_TRACE} ) {
+		my ( $level,$trace_file ) = split( /=/,$trace );
+		my $mess = $level == 1
+			? shortmess( "RESULTSET: $table" )
+			: longmess( "RESULTSET: $table" );
+		if ( $level && $trace_file ) {
+			open( my $fh,'>>',$trace_file ) || cluck( ... );
+			print $fh $mess;
+			close( $fh );
+		} else {
+			print STDERR $mess;
+		}
+	}
+
+	return $self->SUPER::resultset( $table );
+}
 ```
 
 Note:
 - what i've been using in the examples
 - console_monochrome if you don't want colours
+- put the sub in your Schema.pm module
+- shows you potential ->resultset calls missing prefetch
+- as seen in examples, e.g. ./examples/slides/adding_relationships.sh
 
 ---
 ## Gotchas
