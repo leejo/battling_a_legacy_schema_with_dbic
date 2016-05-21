@@ -182,7 +182,7 @@ Note:
 - The R in "RDBMS" is important
 
 ---
-## Generating Schema Classes
+## Generating ResultSource Classes
 
 ```bash
 #!/bin/bash
@@ -209,7 +209,7 @@ Note:
 - useful to have this as a script to rerun as required
 
 ---
-## Generating Schema Classes
+## Generating ResultSource Classes
 
 ```perl
 use utf8;
@@ -543,13 +543,73 @@ Note:
 ---
 ## Virtual Views
 
+```perl
+package SkiResort::Model::LegacySchema::Result::PistesForRating;
+ 
+use base qw/DBIx::Class::Core/;
+ 
+__PACKAGE__->table_class('DBIx::Class::ResultSource::View');
+__PACKAGE__->table('pistes_for_rating');
+__PACKAGE__->result_source_instance->is_virtual(1);
+__PACKAGE__->add_columns( "name", {
+    data_type     => "varchar( 255 )",
+    default_value => \"null",
+    is_nullable   => 1,
+} );
+
+__PACKAGE__->result_source_instance->view_definition( "
+	SELECT piste.name
+	FROM   piste
+    WHERE  rating = ?
+" );
+
+1;
+```
+
+---
+## Virtual Views
+
+```perl
+$model->resultset( "PistesForRating" )
+	->search( {},{ bind => [ $rating ] } )
+```
+
+Note:
+- example: ./examples/slides/virtual_views.sh Easy
+- restricted to a specific number of binds, or are we? (next slide)
+
 ---
 ## Virtual Views Extended
+
+```perl
+package SkiResort::Model::LegacySchema::Result::PistesForRatingMatchingString;
+ 
+use base qw/SkiResort::Model::LegacySchema::Result::PistesForRating/;
+ 
+__PACKAGE__->result_source_instance->view_definition(
+	__PACKAGE__->SUPER::result_source_instance->view_definition . "
+	AND piste.name like ?
+" );
+
+1;
+```
+
+And:
+
+```perl
+$model->resultset( "PistesForRatingMatchingString" )
+	->search( {},{ bind => [ $rating,"%$string%" ] } )
+```
+
+Note:
+- you might want to avoid any pistes next to lakes, so:
+- example: ./examples/slides/virtual_views_extended.sh Easy Lac
+- virtual views are just classes, so we can trivially extend them
 
 ---
 ## Reports
 
-[DBIx::Class::Report](https://metacpan.org/pod/DBIx::Class::Report)
+[DBIx::Class::Report](https://metacpan.org/pod/DBIx::Class::Report#DESCRIPTION)
 
 Note:
 - Just link and show perldoc here, explain ALPHA code
@@ -560,10 +620,10 @@ Note:
 
 * `DBIC_TRACE=1` or `DBIC_TRACE=1=/path/to/output/file`
 * `DBIC_TRACE_PROFILE=console` - for pretty printing
-* `DBI_TRACE=1` - if you're using dbh_do
+* `DBI_TRACE=1 # 2,3,SQL,...` - if you're using dbh_do
 
 ```perl
-use Carp qw/ longmess shortmess /;
+use Carp qw/ cluck longmess shortmess /;
 
 sub resultset {
 	my ( $self,$table ) = @_;
@@ -573,7 +633,7 @@ sub resultset {
 		my $mess = $level == 1
 			? shortmess( "RESULTSET: $table" )
 			: longmess( "RESULTSET: $table" );
-		if ( $level && $trace_file ) {
+		if ( $trace_file ) {
 			open( my $fh,'>>',$trace_file ) || cluck( ... );
 			print $fh $mess;
 			close( $fh );
@@ -596,7 +656,15 @@ Note:
 ---
 ## Gotchas
 
-Prefetch prefetch prefetch.
+<p class="fragment"> Prefetch prefetch prefetch. </p>
+
+<p class="fragment"> Test your app with a representative dataset (where possible). </p>
+
+<p class="fragment"> Keep your Result classes up to date. </p>
+
+Note:
+- "ORMs are slow", no you're probably not using it correctly
+- up to date using the script shown in "Generating ResultSource Classes"
 
 ---
 ## In Summary
@@ -609,9 +677,30 @@ Prefetch prefetch prefetch.
 + Biz
 
 ---
+## Stuff I Didn't Cover
+
+Logging
+
++ https://metacpan.org/pod/DBIx::Class::QueryLog
++ https://metacpan.org/pod/DBIx::Class::UnicornLogger
+
+Deployment
+
++ http://techblog.babyl.ca/entry/dbix-class-deploymenthandler-rocks
+
+Helpers
+
++ https://metacpan.org/release/DBIx-Class-Helpers
++ http://www.perladvent.org/2012/2012-12-21.html
+
+---
 ## Questions?
 
 Links and resources:
+
++ [DBIx::Class](https://metacpan.org/release/DBIx-Class) on metacpan.
++ [fREW's blog](https://blog.afoolishmanifesto.com/), lots of DBI(x::Class) tips.
++ `#dbix-class` on `irc.perl.org`
 
 ---
 ### Bonus SQL Anti-Patterns!
