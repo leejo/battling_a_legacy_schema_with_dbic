@@ -1,0 +1,1240 @@
+{
+   "took" : 9,
+   "hits" : {
+      "max_score" : 1,
+      "total" : 155,
+      "hits" : [
+         {
+            "_id" : "zyEqEir0T7K4_F2bOGXnCCL3WsM",
+            "_score" : 1,
+            "_type" : "release",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2013-06-26T19:58:15.000Z",
+               "provides" : [
+                  "DBIx::Class::Schema::RestrictWithObject",
+                  "DBIx::Class::Schema::RestrictWithObject::RestrictComp::Schema",
+                  "DBIx::Class::Schema::RestrictWithObject::RestrictComp::Source"
+               ],
+               "distribution" : "DBIx-Class-Schema-RestrictWithObject"
+            }
+         },
+         {
+            "_score" : 1,
+            "_type" : "release",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2015-01-17T04:17:23.000Z",
+               "provides" : [
+                  "DBIx::Class::UnicornLogger",
+                  "DBIx::Class::UnicornLogger::FromProfile"
+               ],
+               "distribution" : "DBIx-Class-UnicornLogger"
+            },
+            "_id" : "Uy46_SI4RFZXD_gsLyJbKJeWAx0"
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2015-10-15T13:05:06.000Z",
+               "provides" : [
+                  "DBIx::Class::Wrapper",
+                  "DBIx::Class::Wrapper::Factory",
+                  "DBIx::Class::Wrapper::FactoryBase",
+                  "DBIx::Class::Wrapper::Object"
+               ],
+               "distribution" : "DBIx-Class-Wrapper"
+            },
+            "_id" : "85_gNqmIZJ_N7rbPnIV6SOpl4FI"
+         },
+         {
+            "_id" : "q_S_6bnjHHoL950nVlPCFgLlhZA",
+            "fields" : {
+               "distribution" : "DBIx-Class-Storage-DBI-OpenEdge",
+               "provides" : "DBIx::Class::Storage::DBI::OpenEdge",
+               "date" : "2013-08-07T15:42:54.000Z"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "WkLJKPLXBgn_a6zQb2VhySOognk",
+            "_score" : 1,
+            "_type" : "release",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2013-09-11T05:44:13.000Z",
+               "provides" : "DBIx::Class::ResultSet::Excel",
+               "distribution" : "DBIx-Class-ResultSet-Excel"
+            }
+         },
+         {
+            "_id" : "DE2hewhzgGPbax4_AWDm7hwavBA",
+            "fields" : {
+               "date" : "2013-10-14T05:00:08.000Z",
+               "distribution" : "DBIx-Class-InflateColumn-Time",
+               "provides" : "DBIx::Class::InflateColumn::Time"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "bXm43twEujd5HrIJCWhWMY1eW_o",
+            "fields" : {
+               "date" : "2013-10-25T11:47:23.000Z",
+               "provides" : "DBIx::Class::Relationship::Predicate",
+               "distribution" : "DBIx-Class-Relationship-Predicate"
+            },
+            "_index" : "cpan_v1",
+            "_type" : "release",
+            "_score" : 1
+         },
+         {
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2013-11-16T00:38:31.000Z",
+               "provides" : "DBIx::Class::FormTools",
+               "distribution" : "DBIx-Class-FormTools"
+            },
+            "_score" : 1,
+            "_type" : "release",
+            "_id" : "ds0wROnJHJ_rldgCBeV2bfwUO5E"
+         },
+         {
+            "fields" : {
+               "date" : "2006-01-27T21:38:26.000Z",
+               "distribution" : "DBIx-Class-WebForm"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release",
+            "_id" : "BNBcoEk7EDRpXKBVckRxl4bSSc4"
+         },
+         {
+            "_id" : "PtqMeYAz_ytej2N_8_u_doVo3eY",
+            "fields" : {
+               "date" : "2008-08-27T04:34:55.000Z",
+               "distribution" : "DBIx-Class-GeomColumns"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "fields" : {
+               "distribution" : "DBIx-Class-UserStamp",
+               "date" : "2008-08-27T20:43:07.000Z"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release",
+            "_id" : "2x7R5KY5UGt52kJ5_8QAJ08xstg"
+         },
+         {
+            "_score" : 1,
+            "_type" : "release",
+            "fields" : {
+               "date" : "2008-06-03T07:37:31.000Z",
+               "distribution" : "DBIx-Class-ProxyTable"
+            },
+            "_index" : "cpan_v1",
+            "_id" : "2IkM5apMDfxwsh_nIx95Nivzd3Q"
+         },
+         {
+            "_id" : "eabIv_fdBpBLT28kTwFDy2R0C8k",
+            "fields" : {
+               "date" : "2009-01-06T14:19:23.000Z",
+               "distribution" : "DBIx-Class-ForceUTF8"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "MLmDdtYHxEnYWE6ZNUaZbMPuLCk",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-InflateColumn-Path-Class",
+               "date" : "2008-12-17T20:03:55.000Z"
+            },
+            "_type" : "release",
+            "_score" : 1
+         },
+         {
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-Service",
+               "date" : "2008-04-03T09:49:48.000Z"
+            },
+            "_type" : "release",
+            "_score" : 1,
+            "_id" : "qSkt6GnRO0QDUoy605xLfBb1uWQ"
+         },
+         {
+            "_id" : "Ag36xi9oce_o4cCc4ODDPaEy3Bw",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-AuditLog",
+               "provides" : [
+                  "DBIx::Class::AuditLog",
+                  "DBIx::Class::Schema::AuditLog",
+                  "DBIx::Class::Schema::AuditLog::Structure",
+                  "DBIx::Class::Schema::AuditLog::Structure::View",
+                  "DBIx::Class::Schema::AuditLog::Structure::Base",
+                  "DBIx::Class::Schema::AuditLog::Structure::Field",
+                  "DBIx::Class::Schema::AuditLog::Structure::Change",
+                  "DBIx::Class::Schema::AuditLog::Structure::Action",
+                  "DBIx::Class::Schema::AuditLog::Structure::AuditedTable",
+                  "DBIx::Class::Schema::AuditLog::Structure::Changeset",
+                  "DBIx::Class::Schema::AuditLog::Structure::User",
+                  "DBIx::Class::ResultSet::AuditLog"
+               ],
+               "date" : "2014-08-12T15:37:59.000Z"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "rs74s6slv1rPY4dDBNI1EoR93OE",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2014-05-30T18:13:57.000Z",
+               "distribution" : "DBIx-Class-InflateColumn-Object-Enum",
+               "provides" : "DBIx::Class::InflateColumn::Object::Enum"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_score" : 1,
+            "_type" : "release",
+            "fields" : {
+               "distribution" : "DBIx-Class-InflateColumn-FS",
+               "date" : "2010-06-22T16:52:21.000Z"
+            },
+            "_index" : "cpan_v1",
+            "_id" : "7NQfZwoIeXmBI9EHiY_mXob2srw"
+         },
+         {
+            "_id" : "P_1WhYqBN5uk8a5RDX92l6AQndE",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-HTMLWidget",
+               "date" : "2008-02-06T10:55:26.000Z"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "jox07XI5QKETMp71QRUkXou_1Ls",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-ResultSet-Void",
+               "date" : "2009-05-20T06:36:08.000Z"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "3J_2YOykYo7L0hlhQwvA95v1woU",
+            "_type" : "release",
+            "_score" : 1,
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-FromSledge",
+               "date" : "2007-01-11T03:14:27.000Z"
+            }
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2011-03-03T15:30:11.000Z",
+               "distribution" : "DBIx-Class-Result-ProxyField"
+            },
+            "_id" : "XihhoYDVqhw6PXR_7uz6jI6USyA"
+         },
+         {
+            "_score" : 1,
+            "_type" : "release",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-DynamicDefault",
+               "date" : "2012-04-14T09:19:01.000Z"
+            },
+            "_id" : "dYUMqI1ot_GYUBn8Rrwhx3PHhlU"
+         },
+         {
+            "fields" : {
+               "distribution" : "DBIx-Class-ColumnDefault",
+               "date" : "2012-08-07T18:01:38.000Z"
+            },
+            "_index" : "cpan_v1",
+            "_type" : "release",
+            "_score" : 1,
+            "_id" : "ofMsTiCR7PfrB31i8PX4SXLjNb8"
+         },
+         {
+            "_id" : "o9CigF96TyV0L2mXwDiHAFVNRiM",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "provides" : "DBIx::Class::QueryLog::Conditional",
+               "distribution" : "DBIx-Class-QueryLog-Conditional",
+               "date" : "2014-02-28T14:58:33.000Z"
+            },
+            "_type" : "release",
+            "_score" : 1
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "fields" : {
+               "date" : "2014-03-07T22:37:51.000Z",
+               "distribution" : "DBIx-Class-EncodedColumn-Crypt-Scrypt",
+               "provides" : "DBIx::Class::EncodedColumn::Crypt::Scrypt"
+            },
+            "_index" : "cpan_v1",
+            "_id" : "Y_BDaPdWfOConaLL547j3eHlAgk"
+         },
+         {
+            "_id" : "giMTb0PkiCnkYHy2AL08umBwmAU",
+            "_score" : 1,
+            "_type" : "release",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2012-12-08T20:03:58.000Z",
+               "distribution" : "DBIx-Class-Bootstrap-Simple"
+            }
+         },
+         {
+            "_id" : "IHS7wRt1P6rZINZEkjhNQ17bNqo",
+            "_score" : 1,
+            "_type" : "release",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-InflateColumn-Serializer-CompressJSON",
+               "date" : "2012-12-18T09:23:00.000Z"
+            }
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-I18NColumns",
+               "date" : "2010-09-28T11:15:46.000Z"
+            },
+            "_id" : "al22X_OYGvkkzC_9wnMnEsNA58o"
+         },
+         {
+            "_id" : "3t85va4rGrOmn5SlAAZECOL7eCo",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2010-02-20T13:30:55.000Z",
+               "distribution" : "DBIx-Class-DeleteAction"
+            },
+            "_type" : "release",
+            "_score" : 1
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2006-11-03T23:07:04.000Z",
+               "distribution" : "DBIx-Class-EncodeColumns"
+            },
+            "_id" : "LSnHPAiGN6n2NWPhWLRXiLSWotA"
+         },
+         {
+            "_id" : "fFCftu0hmZwlMyXAIuYBH55j0PA",
+            "fields" : {
+               "distribution" : "DBIx-Class-DigestColumns",
+               "date" : "2007-03-27T17:39:46.000Z"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "43pFw9vOsOeDW_zjnPthNItxByQ",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "provides" : [
+                  "DBIx::Class::ElasticSync",
+                  "DBIx::Class::ElasticSync::ResultSet",
+                  "DBIx::Class::ElasticSync::Role::ElasticBlackholeResult",
+                  "DBIx::Class::ElasticSync::Role::ElasticResult",
+                  "DBIx::Class::ElasticSync::Role::ElasticSchema"
+               ],
+               "distribution" : "DBIx-Class-ElasticSync",
+               "date" : "2015-12-03T12:43:54.000Z"
+            },
+            "_type" : "release",
+            "_score" : 1
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-BatchUpdate",
+               "provides" : [
+                  "DBIx::Class::BatchUpdate",
+                  "DBIx::Class::BatchUpdate::Batch",
+                  "DBIx::Class::BatchUpdate::Update"
+               ],
+               "date" : "2016-02-05T14:57:48.000Z"
+            },
+            "_id" : "RGxLQZqI_B6fvJX3y_EedLaMuMg"
+         },
+         {
+            "_id" : "8xArUqSQODPYDcTw5Pm__SO7gjk",
+            "_score" : 1,
+            "_type" : "release",
+            "fields" : {
+               "date" : "2016-01-07T16:48:23.000Z",
+               "distribution" : "DBIx-Class-Migration",
+               "provides" : [
+                  "Catalyst::TraitFor::Model::DBIC::Schema::FromMigration",
+                  "Catalyst::TraitFor::Model::DBIC::Schema::FromMigration::_MigrationHelper",
+                  "DBIx::Class::Migration",
+                  "DBIx::Class::Migration::MySQLSandbox",
+                  "DBIx::Class::Migration::Population",
+                  "DBIx::Class::Migration::PostgresqlSandbox",
+                  "DBIx::Class::Migration::RunScript",
+                  "DBIx::Class::Migration::RunScript::Trait::Dump",
+                  "DBIx::Class::Migration::RunScript::Trait::Populate",
+                  "DBIx::Class::Migration::RunScript::Trait::SchemaLoader",
+                  "DBIx::Class::Migration::RunScript::Trait::TargetPath",
+                  "DBIx::Class::Migration::Sandbox",
+                  "DBIx::Class::Migration::SandboxDirSandboxBuilder",
+                  "DBIx::Class::Migration::SchemaLoader",
+                  "DBIx::Class::Migration::Script",
+                  "DBIx::Class::Migration::ShareDirBuilder",
+                  "DBIx::Class::Migration::SqliteSandbox",
+                  "DBIx::Class::Migration::TargetDirSandboxBuilder",
+                  "DBIx::Class::Migration::TempDirBuilder",
+                  "DBIx::Class::Migration::TempDirSandboxBuilder",
+                  "DBIx::Class::Migration::Types",
+                  "Test::DBIx::Class::FixtureCommand::Population"
+               ]
+            },
+            "_index" : "cpan_v1"
+         },
+         {
+            "_id" : "T_4yMgBFS_95a0mHqZmVv_5TS3Y",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "provides" : [
+                  "DBIx::Class",
+                  "DBIx::Class::AccessorGroup",
+                  "DBIx::Class::Admin",
+                  "DBIx::Class::CDBICompat",
+                  "DBIx::Class::Core",
+                  "DBIx::Class::Cursor",
+                  "DBIx::Class::DB",
+                  "DBIx::Class::Exception",
+                  "DBIx::Class::FilterColumn",
+                  "DBIx::Class::InflateColumn",
+                  "DBIx::Class::InflateColumn::DateTime",
+                  "DBIx::Class::InflateColumn::File",
+                  "DBIx::Class::Optional::Dependencies",
+                  "DBIx::Class::Ordered",
+                  "DBIx::Class::PK",
+                  "DBIx::Class::PK::Auto",
+                  "DBIx::Class::Relationship",
+                  "DBIx::Class::Relationship::Base",
+                  "DBIx::Class::ResultClass::HashRefInflator",
+                  "DBIx::Class::ResultSet",
+                  "DBIx::Class::ResultSetColumn",
+                  "DBIx::Class::ResultSetManager",
+                  "DBIx::Class::ResultSource",
+                  "DBIx::Class::ResultSource::Table",
+                  "DBIx::Class::ResultSource::View",
+                  "DBIx::Class::ResultSourceHandle",
+                  "DBIx::Class::ResultSourceProxy::Table",
+                  "DBIx::Class::Row",
+                  "DBIx::Class::SQLMaker",
+                  "DBIx::Class::SQLMaker::LimitDialects",
+                  "DBIx::Class::SQLMaker::OracleJoins",
+                  "DBIx::Class::Schema",
+                  "DBIx::Class::Schema::Versioned",
+                  "DBIx::Class::Serialize::Storable",
+                  "DBIx::Class::StartupCheck",
+                  "DBIx::Class::Storage",
+                  "DBIx::Class::Storage::DBI",
+                  "DBIx::Class::Storage::DBI::ACCESS",
+                  "DBIx::Class::Storage::DBI::ADO",
+                  "DBIx::Class::Storage::DBI::ADO::MS_Jet",
+                  "DBIx::Class::Storage::DBI::ADO::MS_Jet::Cursor",
+                  "DBIx::Class::Storage::DBI::ADO::Microsoft_SQL_Server",
+                  "DBIx::Class::Storage::DBI::ADO::Microsoft_SQL_Server::Cursor",
+                  "DBIx::Class::Storage::DBI::AutoCast",
+                  "DBIx::Class::Storage::DBI::Cursor",
+                  "DBIx::Class::Storage::DBI::DB2",
+                  "DBIx::Class::Storage::DBI::Firebird",
+                  "DBIx::Class::Storage::DBI::Firebird::Common",
+                  "DBIx::Class::Storage::DBI::IdentityInsert",
+                  "DBIx::Class::Storage::DBI::Informix",
+                  "DBIx::Class::Storage::DBI::InterBase",
+                  "DBIx::Class::Storage::DBI::MSSQL",
+                  "DBIx::Class::Storage::DBI::NoBindVars",
+                  "DBIx::Class::Storage::DBI::ODBC",
+                  "DBIx::Class::Storage::DBI::ODBC::ACCESS",
+                  "DBIx::Class::Storage::DBI::ODBC::DB2_400_SQL",
+                  "DBIx::Class::Storage::DBI::ODBC::Firebird",
+                  "DBIx::Class::Storage::DBI::ODBC::Microsoft_SQL_Server",
+                  "DBIx::Class::Storage::DBI::ODBC::SQL_Anywhere",
+                  "DBIx::Class::Storage::DBI::Oracle",
+                  "DBIx::Class::Storage::DBI::Oracle::Generic",
+                  "DBIx::Class::Storage::DBI::Oracle::WhereJoins",
+                  "DBIx::Class::Storage::DBI::Pg",
+                  "DBIx::Class::Storage::DBI::Replicated",
+                  "DBIx::Class::Storage::DBI::Replicated::Balancer",
+                  "DBIx::Class::Storage::DBI::Replicated::Balancer::First",
+                  "DBIx::Class::Storage::DBI::Replicated::Balancer::Random",
+                  "DBIx::Class::Storage::DBI::Replicated::Pool",
+                  "DBIx::Class::Storage::DBI::Replicated::Replicant",
+                  "DBIx::Class::Storage::DBI::Replicated::WithDSN",
+                  "DBIx::Class::Storage::DBI::SQLAnywhere",
+                  "DBIx::Class::Storage::DBI::SQLAnywhere::Cursor",
+                  "DBIx::Class::Storage::DBI::SQLite",
+                  "DBIx::Class::Storage::DBI::Sybase",
+                  "DBIx::Class::Storage::DBI::Sybase::ASE",
+                  "DBIx::Class::Storage::DBI::Sybase::ASE::NoBindVars",
+                  "DBIx::Class::Storage::DBI::Sybase::FreeTDS",
+                  "DBIx::Class::Storage::DBI::Sybase::MSSQL",
+                  "DBIx::Class::Storage::DBI::Sybase::Microsoft_SQL_Server",
+                  "DBIx::Class::Storage::DBI::Sybase::Microsoft_SQL_Server::NoBindVars",
+                  "DBIx::Class::Storage::DBI::UniqueIdentifier",
+                  "DBIx::Class::Storage::DBI::mysql",
+                  "DBIx::Class::Storage::Statistics",
+                  "DBIx::Class::Storage::TxnScopeGuard",
+                  "DBIx::Class::UTF8Columns",
+                  "SQL::Translator::Parser::DBIx::Class",
+                  "SQL::Translator::Producer::DBIx::Class::File"
+               ],
+               "distribution" : "DBIx-Class",
+               "date" : "2016-02-11T18:05:19.000Z"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "_5hqcH_52_uXKWL9Tr0VhDNhtvw",
+            "_type" : "release",
+            "_score" : 1,
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-ResultSet-AccessorsEverywhere",
+               "provides" : "DBIx::Class::ResultSet::AccessorsEverywhere",
+               "date" : "2016-04-25T12:37:56.000Z"
+            }
+         },
+         {
+            "_id" : "3yf2d7YNhjT7FF6w3X3QykFkijA",
+            "_type" : "release",
+            "_score" : 1,
+            "fields" : {
+               "date" : "2014-09-17T16:04:32.000Z",
+               "provides" : "DBIx::Class::TimeStamp::HiRes",
+               "distribution" : "DBIx-Class-TimeStamp-HiRes"
+            },
+            "_index" : "cpan_v1"
+         },
+         {
+            "_id" : "Nvmvg9mZ3_34nBFhr9EznYPM8JE",
+            "fields" : {
+               "date" : "2014-09-30T12:59:12.000Z",
+               "provides" : [
+                  "DBIx::Class::Journal",
+                  "DBIx::Class::Schema::Journal",
+                  "DBIx::Class::Schema::Journal::DB",
+                  "DBIx::Class::Schema::Journal::DB::AuditLog",
+                  "DBIx::Class::Schema::Journal::DB::ChangeSet",
+                  "DBIx::Class::Schema::Journal::DB::AuditHistory",
+                  "DBIx::Class::Schema::Journal::DB::ChangeLog",
+                  "DBIx::Class::Journal::EvalWrap"
+               ],
+               "distribution" : "DBIx-Class-Journal"
+            },
+            "_index" : "cpan_v1",
+            "_type" : "release",
+            "_score" : 1
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2014-10-20T03:31:46.000Z",
+               "distribution" : "DBIx-Class-InflateColumn-Serializer-Sereal",
+               "provides" : "DBIx::Class::InflateColumn::Serializer::Sereal"
+            },
+            "_id" : "SyDafxwhEaYxvlNUQVuJZZRuiZg"
+         },
+         {
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2015-02-04T05:22:54.000Z",
+               "provides" : [
+                  "DBIx::Class::Schema::TxnEndHook",
+                  "DBIx::Class::Storage::TxnEndHook"
+               ],
+               "distribution" : "DBIx-Class-Storage-TxnEndHook"
+            },
+            "_type" : "release",
+            "_score" : 1,
+            "_id" : "c68mMNVqF5SlnPNKjPYw_gCENng"
+         },
+         {
+            "_id" : "BARAU7N5CP6s6gOIKzTc_lAqsBE",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2014-10-11T20:27:06.000Z",
+               "provides" : "DBIx::Class::Row::Delta",
+               "distribution" : "DBIx-Class-Row-Delta"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "_index" : "cpan_v1",
+            "fields" : {
+               "provides" : [
+                  "DBIx::Class::Schema::Diff",
+                  "DBIx::Class::Schema::Diff::Filter",
+                  "DBIx::Class::Schema::Diff::InfoPacket",
+                  "DBIx::Class::Schema::Diff::Role::Common",
+                  "DBIx::Class::Schema::Diff::Schema",
+                  "DBIx::Class::Schema::Diff::SchemaData",
+                  "DBIx::Class::Schema::Diff::Source"
+               ],
+               "distribution" : "DBIx-Class-Schema-Diff",
+               "date" : "2015-04-27T18:43:42.000Z"
+            },
+            "_id" : "24SsCl8nqamQBtnIRcFaJRN71aM"
+         },
+         {
+            "_id" : "Z_jhnWrA2UGmah_s7vNfZzq6BOI",
+            "_type" : "release",
+            "_score" : 1,
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2015-05-14T09:59:38.000Z",
+               "distribution" : "DBIx-Class-InflateColumn-TimeMoment",
+               "provides" : "DBIx::Class::InflateColumn::TimeMoment"
+            }
+         },
+         {
+            "_id" : "aspgPuymia0tZ_zwBo2diD5WyJs",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2014-02-26T19:39:13.000Z",
+               "distribution" : "DBIx-Class-QueryLog-Tee",
+               "provides" : "DBIx::Class::QueryLog::Tee"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "eEU_RJE9VOPcCnRviJi14FCAdpE",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2008-11-11T16:27:07.000Z",
+               "distribution" : "DBIx-Class-AsFdat"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "fields" : {
+               "date" : "2010-08-16T12:22:03.000Z",
+               "distribution" : "DBIx-Class-ResultSet-WithMetaData"
+            },
+            "_index" : "cpan_v1",
+            "_type" : "release",
+            "_score" : 1,
+            "_id" : "AAc70k9e9c2RoeD37I_tm_hww_c"
+         },
+         {
+            "fields" : {
+               "date" : "2011-01-28T12:20:31.000Z",
+               "distribution" : "DBIx-Class-FrozenColumns"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release",
+            "_id" : "pqSrwbF9eWDYCcXYheytfCMb5O4"
+         },
+         {
+            "_id" : "Lto6phN2j4zABUcnBrf_0D9BW_o",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-AlwaysUpdate",
+               "date" : "2011-08-05T20:09:17.000Z"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "x6iaa5PrB_qfjfXDeyOFVwuBrlI",
+            "_type" : "release",
+            "_score" : 1,
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-MooseColumns",
+               "date" : "2011-05-05T23:32:34.000Z"
+            }
+         },
+         {
+            "_id" : "cG91HAvEGNXKKSCdPaa8RCVCI6g",
+            "_score" : 1,
+            "_type" : "release",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2011-06-24T10:37:44.000Z",
+               "distribution" : "DBIx-Class-Schema-ResultSetAccessors"
+            }
+         },
+         {
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2012-10-25T23:53:36.000Z",
+               "distribution" : "DBIx-Class-MassAssignable"
+            },
+            "_score" : 1,
+            "_type" : "release",
+            "_id" : "YAj6KaPo4_LqOAb06KvV72_yFh0"
+         },
+         {
+            "_id" : "E4X5V1jl74l7eihGiojjcy42jQc",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-LookupColumn",
+               "date" : "2012-12-02T12:52:08.000Z"
+            },
+            "_type" : "release",
+            "_score" : 1
+         },
+         {
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2011-02-01T20:28:56.000Z",
+               "distribution" : "DBIx-Class-Storage-DBI-mysql-backup"
+            },
+            "_type" : "release",
+            "_score" : 1,
+            "_id" : "_AhP77uC2woCS4mg_KZvi5fk83w"
+         },
+         {
+            "_id" : "4Hxg_p3ixU_pbnsbiYkNzEy5Dcs",
+            "_score" : 1,
+            "_type" : "release",
+            "fields" : {
+               "distribution" : "DBIx-Class-OptimisticLocking",
+               "date" : "2011-08-22T14:42:33.000Z"
+            },
+            "_index" : "cpan_v1"
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "fields" : {
+               "date" : "2011-12-21T16:21:02.000Z",
+               "distribution" : "DBIx-Class-UUIDColumns"
+            },
+            "_index" : "cpan_v1",
+            "_id" : "7ao_o4ZftAzHFNVSZvykj73fybA"
+         },
+         {
+            "_id" : "h_z9wBoql7sNbYSfMZYx_G7IuwQ",
+            "fields" : {
+               "date" : "2009-06-14T17:10:38.000Z",
+               "distribution" : "DBIx-Class-ResultSet-HashRef"
+            },
+            "_index" : "cpan_v1",
+            "_type" : "release",
+            "_score" : 1
+         },
+         {
+            "_id" : "RV9lvhVXosw_smNsI4_KHqtnzk4",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-SaltedPasswords",
+               "date" : "2007-01-08T17:58:22.000Z"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "OJaEoMon7eg6ZBZj0lGUlwsNrPk",
+            "_type" : "release",
+            "_score" : 1,
+            "fields" : {
+               "distribution" : "DBIx-Class-EasyConf-YAML",
+               "date" : "2009-08-18T12:41:05.000Z"
+            },
+            "_index" : "cpan_v1"
+         },
+         {
+            "fields" : {
+               "date" : "2009-08-17T09:51:29.000Z",
+               "distribution" : "DBIx-Class-BitField"
+            },
+            "_index" : "cpan_v1",
+            "_type" : "release",
+            "_score" : 1,
+            "_id" : "wmGVCdqSQV_kltrF4V4hFQKSLJk"
+         },
+         {
+            "_id" : "mZ4_4Cn_9Hnd_ip28Td1vM3Ha_c",
+            "fields" : {
+               "date" : "2009-08-17T15:15:39.000Z",
+               "distribution" : "DBIx-Class-Stash"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "QU4ZNaTuU936d2_35KSQWct8eiI",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-ResultSet-Data-Pageset",
+               "date" : "2009-11-19T14:55:06.000Z"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "bcOWhYGr4o1f7ILHKWwpUXRz_aY",
+            "fields" : {
+               "distribution" : "DBIx-Class-Tree-CalculateSets",
+               "date" : "2009-10-28T11:55:50.000Z"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "KaW4v_IJXoi85Xzz_sTDVG1L_Vc",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2008-06-24T23:12:46.000Z",
+               "distribution" : "DBIx-Class-DynamicSubclass"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "fields" : {
+               "distribution" : "DBIx-Class-Preview",
+               "date" : "2011-03-30T09:39:51.000Z"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release",
+            "_id" : "B_3_FccPfVqjEcCdVcIGmYjuVf0"
+         },
+         {
+            "_id" : "t9JpRB3eNgX_ofP84doqIUIy75o",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-InflateColumn-ISBN",
+               "date" : "2007-06-02T13:47:53.000Z"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-ParameterizedJoinHack",
+               "provides" : [
+                  "DBIx::Class::ParameterizedJoinHack",
+                  "DBIx::Class::ResultSet::ParameterizedJoinHack"
+               ],
+               "date" : "2016-04-19T17:26:44.000Z"
+            },
+            "_type" : "release",
+            "_score" : 1,
+            "_id" : "B4wPdoHQAv9HRnDrNGGpTHe9ZGs"
+         },
+         {
+            "_id" : "7u_V0EEwhod8S3NmoPwcVkfhbQ8",
+            "fields" : {
+               "date" : "2016-01-02T13:23:10.000Z",
+               "provides" : "DBIx::Class::TimeStamp::WithTimeZone",
+               "distribution" : "DBIx-Class-TimeStamp-WithTimeZone"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "QvtaWFKshn_Qy9m7v4ol4C3vunU",
+            "_score" : 1,
+            "_type" : "release",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2007-02-26T14:22:47.000Z",
+               "distribution" : "DBIx-Class-Loader-ADO"
+            }
+         },
+         {
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2009-09-29T21:30:50.000Z",
+               "distribution" : "DBIx-Class-InflateColumn-Markup-Unified"
+            },
+            "_score" : 1,
+            "_type" : "release",
+            "_id" : "GpaR6k02e_QayKO5_0ogvl5uXlI"
+         },
+         {
+            "_id" : "AN_SXh_ip4ahCFCzSWvqNQanSMU",
+            "fields" : {
+               "date" : "2014-02-07T04:37:48.000Z",
+               "provides" : [
+                  "DBIx::Class::ResultSet::RecursiveUpdate",
+                  "DBIx::Class::ResultSet::RecursiveUpdate::Functions"
+               ],
+               "distribution" : "DBIx-Class-ResultSet-RecursiveUpdate"
+            },
+            "_index" : "cpan_v1",
+            "_type" : "release",
+            "_score" : 1
+         },
+         {
+            "_id" : "xz4poJHjIbrz5D8_Y8WYEbz0EKY",
+            "_score" : 1,
+            "_type" : "release",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2006-11-06T18:13:53.000Z",
+               "distribution" : "DBIx-Class-FormatColumns"
+            }
+         },
+         {
+            "_id" : "D59FEy6D2QTv_zf_hHJjsO5Lnbo",
+            "fields" : {
+               "date" : "2014-10-09T20:43:46.000Z",
+               "distribution" : "DBIx-Class-Schema-PopulateMore",
+               "provides" : [
+                  "DBIx::Class::Schema::PopulateMore",
+                  "DBIx::Class::Schema::PopulateMore::Command",
+                  "DBIx::Class::Schema::PopulateMore::Inflator",
+                  "DBIx::Class::Schema::PopulateMore::Visitor",
+                  "DBIx::Class::Schema::PopulateMore::Inflator::Index",
+                  "DBIx::Class::Schema::PopulateMore::Inflator::Find",
+                  "DBIx::Class::Schema::PopulateMore::Inflator::Env",
+                  "DBIx::Class::Schema::PopulateMore::Inflator::Date"
+               ]
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "HL4jdJwB47Exu2hu09LeSzT8aj0",
+            "fields" : {
+               "date" : "2015-05-27T13:06:48.000Z",
+               "provides" : "DBIx::Class::IntrospectableM2M",
+               "distribution" : "DBIx-Class-IntrospectableM2M"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "fields" : {
+               "date" : "2008-04-05T13:38:09.000Z",
+               "distribution" : "DBIx-Class-TableNames"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release",
+            "_id" : "cq_s3QgWkHvjvSFK6aCwz1QqToc"
+         },
+         {
+            "_id" : "TJYwMsvlBYvTBEr_kCv4jaZXdbQ",
+            "fields" : {
+               "date" : "2007-02-13T09:38:40.000Z",
+               "distribution" : "DBIx-Class-DigestColumns-Lite"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "4_P4rNqd023Rrz8LjtCMCSSXXU8",
+            "_score" : 1,
+            "_type" : "release",
+            "fields" : {
+               "date" : "2007-05-14T02:22:48.000Z",
+               "distribution" : "DBIx-Class-StorageReadOnly"
+            },
+            "_index" : "cpan_v1"
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "fields" : {
+               "date" : "2009-07-11T15:38:53.000Z",
+               "distribution" : "DBIx-Class-Validation"
+            },
+            "_index" : "cpan_v1",
+            "_id" : "1IMrS2ang3vlmiKaMkhfxdI9FII"
+         },
+         {
+            "fields" : {
+               "date" : "2009-06-29T16:07:12.000Z",
+               "distribution" : "DBIx-Class-PhoneticSearch"
+            },
+            "_index" : "cpan_v1",
+            "_type" : "release",
+            "_score" : 1,
+            "_id" : "wpRHeFzbjG1i52iR7SNZ1oVb5yk"
+         },
+         {
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-Indexer-WebService-Lucene",
+               "date" : "2007-05-02T12:30:36.000Z"
+            },
+            "_score" : 1,
+            "_type" : "release",
+            "_id" : "JSg8TEzInJWO8bAdgu0QIl8SrC0"
+         },
+         {
+            "_score" : 1,
+            "_type" : "release",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-Schema-Slave",
+               "date" : "2008-05-20T14:35:22.000Z"
+            },
+            "_id" : "eWjq6fuseqHWI9ca9_d4tDSh4X4"
+         },
+         {
+            "_id" : "9uKsHpO6VVbqgNrgYceXqFrRBt0",
+            "fields" : {
+               "date" : "2008-06-26T17:33:22.000Z",
+               "distribution" : "DBIx-Class-SingletonRows"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_score" : 1,
+            "_type" : "release",
+            "fields" : {
+               "date" : "2010-07-04T05:47:01.000Z",
+               "distribution" : "DBIx-Class-Numeric"
+            },
+            "_index" : "cpan_v1",
+            "_id" : "NoUcEI65sOOG8r5aSJ84x8SS_JA"
+         },
+         {
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2010-04-07T13:22:19.000Z",
+               "distribution" : "DBIx-Class-CustomPrefetch"
+            },
+            "_score" : 1,
+            "_type" : "release",
+            "_id" : "3SNYgrpa7XURgO8UNCAga2_XlrE"
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "fields" : {
+               "distribution" : "DBIx-Class-ResultSet-Faceter",
+               "date" : "2010-07-21T19:39:26.000Z"
+            },
+            "_index" : "cpan_v1",
+            "_id" : "hCyV1xP5APc95iGaxaY1wGbsq3M"
+         },
+         {
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-QueryProfiler",
+               "date" : "2011-08-03T08:06:34.000Z"
+            },
+            "_type" : "release",
+            "_score" : 1,
+            "_id" : "JvQdChdSjUlFKwptBGEg2uY_drg"
+         },
+         {
+            "_score" : 1,
+            "_type" : "release",
+            "fields" : {
+               "date" : "2013-02-19T14:30:10.000Z",
+               "distribution" : "DBIx-Class-Result-Validation"
+            },
+            "_index" : "cpan_v1",
+            "_id" : "c26gMjkTezEs99hZvmcTwZiKpQ0"
+         },
+         {
+            "fields" : {
+               "provides" : "DBIx::Class::TopoSort",
+               "distribution" : "DBIx-Class-TopoSort",
+               "date" : "2014-03-02T16:31:37.000Z"
+            },
+            "_index" : "cpan_v1",
+            "_type" : "release",
+            "_score" : 1,
+            "_id" : "Xs70MWpgUwTSXs0WBn2WFItSNgQ"
+         },
+         {
+            "_id" : "MMMgHX4f7C3n_1ys1Epd9HaLX_Y",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2014-01-12T16:29:20.000Z",
+               "provides" : [
+                  "DBIx::Class::MaterializedPath",
+                  "DBIx::Class::MaterializedPath",
+                  "DBIx::Class::MaterializedPath"
+               ],
+               "distribution" : "DBIx-Class-MaterializedPath"
+            },
+            "_type" : "release",
+            "_score" : 1
+         },
+         {
+            "_id" : "JiwflWnVWaBIAcj8L6RZPtkUlSM",
+            "_type" : "release",
+            "_score" : 1,
+            "fields" : {
+               "date" : "2013-07-09T02:26:01.000Z",
+               "provides" : "DBIx::Class::ResultSource::MultipleTableInheritance",
+               "distribution" : "DBIx-Class-ResultSource-MultipleTableInheritance"
+            },
+            "_index" : "cpan_v1"
+         },
+         {
+            "_score" : 1,
+            "_type" : "release",
+            "fields" : {
+               "distribution" : "DBIx-Class-TimeStamp",
+               "date" : "2010-09-05T15:01:37.000Z"
+            },
+            "_index" : "cpan_v1",
+            "_id" : "VDVenSZs2rwwfpWI1BAGCtL6vWM"
+         },
+         {
+            "_id" : "J10JNsdeK1gbBzV_fj6qSnSpFxM",
+            "fields" : {
+               "distribution" : "DBIx-Class-InflateColumn-BigFloat",
+               "date" : "2011-05-26T05:10:34.000Z"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "fields" : {
+               "date" : "2010-08-20T16:17:21.000Z",
+               "distribution" : "DBIx-Class-InflateColumn-DateTime-Duration"
+            },
+            "_index" : "cpan_v1",
+            "_type" : "release",
+            "_score" : 1,
+            "_id" : "0HUj0t_IMc7huDHItANhgdAaAew"
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "fields" : {
+               "date" : "2012-07-30T17:35:26.000Z",
+               "distribution" : "DBIx-Class-FilterColumn-ByType"
+            },
+            "_index" : "cpan_v1",
+            "_id" : "MYaJZMG26MCuLSQ8RDYxiZ0T7rY"
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "_index" : "cpan_v1",
+            "fields" : {
+               "date" : "2012-09-24T04:21:06.000Z",
+               "distribution" : "DBIx-Class-Indexer-WebService-Dezi"
+            },
+            "_id" : "tee_2pY3ubmdVLq4htcshJEDMyA"
+         },
+         {
+            "_id" : "3X8n2iNL8UBja63SwBQHqknc5J4",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-RandomColumns",
+               "date" : "2012-10-22T20:02:27.000Z"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-DateTime-Epoch",
+               "date" : "2012-10-22T18:10:15.000Z"
+            },
+            "_type" : "release",
+            "_score" : 1,
+            "_id" : "ik9nSp_ZJOHou32a5tebAo5TCI4"
+         },
+         {
+            "_type" : "release",
+            "_score" : 1,
+            "fields" : {
+               "date" : "2015-08-10T16:00:41.000Z",
+               "provides" : "DBIx::Class::Validation::Structure",
+               "distribution" : "DBIx-Class-Validation-Structure"
+            },
+            "_index" : "cpan_v1",
+            "_id" : "GaQhHcg8qrgWTMHtLy_N_I9bKr8"
+         },
+         {
+            "_id" : "_UzKII5k7U6mT2fzwkJCcyJO2IA",
+            "_index" : "cpan_v1",
+            "fields" : {
+               "distribution" : "DBIx-Class-Sims-REST",
+               "provides" : [
+                  "DBIx::Class::Sims::REST",
+                  "DBIx::Class::Sims::REST::MySQL",
+                  "DBIx::Class::Sims::REST::SQLite"
+               ],
+               "date" : "2015-12-08T04:00:28.000Z"
+            },
+            "_score" : 1,
+            "_type" : "release"
+         },
+         {
+            "_id" : "wkp4w0hysWxPz61ygjOE74q07bg",
+            "fields" : {
+               "date" : "2015-11-24T19:39:45.000Z",
+               "distribution" : "DBIx-Class-RDBOHelpers",
+               "provides" : "DBIx::Class::RDBOHelpers"
+            },
+            "_index" : "cpan_v1",
+            "_score" : 1,
+            "_type" : "release"
+         }
+      ]
+   },
+   "_shards" : {
+      "failed" : 0,
+      "total" : 5,
+      "successful" : 5
+   },
+   "timed_out" : false
+}

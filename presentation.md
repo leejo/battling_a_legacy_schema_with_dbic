@@ -182,13 +182,12 @@ Note:
 - The R in "RDBMS" is important
 
 ---
-## Generating ResultSource Classes
+## Generating Classes
 
 ```bash
 #!/bin/bash
 
-set -e
-set -x
+set -e -x -u
 
 folder=$1
 db_path=$2
@@ -205,11 +204,12 @@ dbicdump \
 ```
 
 Note:
+- Result source classes
 - cd examples; sh db/gen_dbic_classes.sh lib db/legacy/resorts_legacy.db 1
 - useful to have this as a script to rerun as required
 
 ---
-## Generating ResultSource Classes
+## Generating Classes
 
 ```perl
 use utf8;
@@ -426,12 +426,12 @@ __PACKAGE__->load_components(qw/InflateColumn::DateTime/);
 When `$column` is a `date`, `timestamp` or `datetime` data type:
 
 ```perl
-$model->resultset( "Foo" )->first->$column->subtract->( months => 1 )->ymd;
+$model->resultset( "Foo" )->first->$column->subtract->( months => 1 )->ymd( '-' );
 ```
 
 <p class="fragment">`DATE_FORMAT(DATE_SUB(c,INTERVAL 1 MONTH),'%Y-%m-%d')`</p>
 
-<p class="fragment">Stop using your RDMS to do date calculations / format.</p>
+<p class="fragment">Stop using your RDMS for date calculations / localisation.</p>
 
 Note:
 - we can both inflate and *deflate*
@@ -515,11 +515,9 @@ Options:
 * [DBIx::Class::Report](https://metacpan.org/pod/DBIx::Class::Report)
 
 Note:
+- Note a sign of a legacy schema
 - You *can* rewrite most (if not all) SQL, but you need to find a balance
 - DBIC_TRACE if you need to debug your SQL::Abstract struct (more later)
-- dbh_do, low level db handle (with exceptions)
-- Virtual views - views, but virtual!
-- Report - on demand virtual views (ALPHA code)
 
 ---
 ## dbh_do
@@ -537,6 +535,7 @@ my @results = $schema->storage->dbh_do(
 ```
 
 Note:
+- dbh_do, low level db handle (with exceptions)
 - straight out of the docs
 - using this rather than ->_dbh or ->dbh ensures correct exception handling and reconnection
 
@@ -565,6 +564,9 @@ __PACKAGE__->result_source_instance->view_definition( "
 
 1;
 ```
+
+Note:
+- note the is_virtual flag
 
 ---
 ## Virtual Views
@@ -664,7 +666,7 @@ Note:
 
 Note:
 - "ORMs are slow", no you're probably not using it correctly
-- up to date using the script shown in "Generating ResultSource Classes"
+- up to date using the script shown in "Generating Classes"
 
 ---
 ## In Summary
@@ -673,25 +675,60 @@ Note:
     - The ORM is *not* your model
     - Use it *in* your model
 + DBIx::Class can be thought of as a toolkit, not just an ORM
-+ Boz
-+ Biz
++ Define relationships even if they don't exist as FKs in the schema
++ Filters can help you fix problems with data
+	- So you don't need to faff about downstream
+	- And give you objects
+	- Or you can sanity check data before it gets into the db
++ You can get to the low level handle if you have a complex query
+	- Or use virtual views so you DRY
+	- And again get objects
 
 ---
 ## Stuff I Didn't Cover
 
 Logging
 
-+ https://metacpan.org/pod/DBIx::Class::QueryLog
-+ https://metacpan.org/pod/DBIx::Class::UnicornLogger
++ [DBIx::Class::QueryLog](https://metacpan.org/pod/DBIx::Class::QueryLog)
++ [DBIx::Class::UnicornLogger](https://metacpan.org/pod/DBIx::Class::UnicornLogger)
 
 Deployment
 
-+ http://techblog.babyl.ca/entry/dbix-class-deploymenthandler-rocks
++ [DBIx::Class::DeploymentHandler](https://metacpan.org/pod/DBIx::Class::DeploymentHandler)
 
 Helpers
 
-+ https://metacpan.org/release/DBIx-Class-Helpers
-+ http://www.perladvent.org/2012/2012-12-21.html
++ [DBIx-Class-Helpers](https://metacpan.org/release/DBIx-Class-Helpers)
+
+Note:
+- show metacpan page for Helpers (there are loads)
+
+---
+## There's Loads Of Other Stuff
+
+```bash
+curl -XPOST api.metacpan.org/v0/release/_search?size=100 -d '{
+    "query": {
+        "wildcard" : {
+            "release.distribution" : "DBIx-Class*"
+        }
+    },
+    "size" : 5000,
+    "filter" : {
+        "term" : {
+            "status" : "latest"
+        }
+    },
+    "fields": [
+        "release.distribution",
+        "release.date",
+        "provides"
+    ]
+}' | jq -r '.hits.hits[].fields.distribution' | sort
+```
+
+Note:
+- 100 distributions of the form DBIx::Class:: when i last checked
 
 ---
 ## Questions?
