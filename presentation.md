@@ -515,7 +515,7 @@ Options:
 * [DBIx::Class::Report](https://metacpan.org/pod/DBIx::Class::Report)
 
 Note:
-- Note a sign of a legacy schema
+- Not a sign of a legacy schema
 - You *can* rewrite most (if not all) SQL, but you need to find a balance
 - DBIC_TRACE if you need to debug your SQL::Abstract struct (more later)
 
