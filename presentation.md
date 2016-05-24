@@ -20,9 +20,9 @@ YAPC::{NA,EU} 2016
 
 <p class="fragment"> And you're probably sick of writing trivial SQL. </p>
 
-<p class="fragment"> So your trivial SQL statements ... right? </p>
+<p class="fragment"> So your trivial SQL statements may become non-trivial SQL statements. </p>
 
-<p class="fragment"> "don't leak the abstraction" </p>
+<p class="fragment"> So "don't leak the abstraction" </p>
 
 <p class="fragment"> DBIx::Class offers many useful features, as we shall see. </p>
 
@@ -31,7 +31,7 @@ YAPC::{NA,EU} 2016
 Note:
 - my first intro to dbic, don't want to go back
 - no writing same SQL over and over
-- quoting Ovid, who was quoting Joel Spolsky
+- [quoting Ovid](https://programmers.stackexchange.com/questions/304520/when-should-i-use-perls-dbixclass/304557#304557), who was [quoting Joel Spolsky](http://www.joelonsoftware.com/articles/LeakyAbstractions.html)
 - concentrate on the business logic
 - objects
 - DBIx::Class is not just an ORM, it's a toolkit (plugins, etc)
