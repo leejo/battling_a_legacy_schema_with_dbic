@@ -146,7 +146,7 @@ Note:
 
 ```
 11:31 <@ribasushi> if you have an existing gnarly database you want to wrap your head
-                   around, vanstyn_'s rdbic is a superb tool building on top of the
+                   around, vanstyn's rdbic is a superb tool building on top of the
                    ecosystem: http://www.catalystframework.org/calendar/2014/16
 ```
 
@@ -207,6 +207,9 @@ Note:
 - Result source classes
 - cd examples; sh db/gen_dbic_classes.sh lib db/legacy/resorts_legacy.db 1
 - useful to have this as a script to rerun as required
+- safe to rerun on modified classes (assuming no changes above the md5sum)
+- [result_base_class](https://metacpan.org/pod/DBIx::Class::Schema::Loader::Base#result_base_class)=DBIx::Class::Code (the default, can change
+- saves trouble/time down the road
 
 ---
 ## Generating Classes
@@ -298,7 +301,7 @@ Note:
 - belongs_to is really the one true representative relationship
 - as foreign keys in a schema definition only ever say what they "belong to"
 - many_to_many is literally an accessor, there is no metadata behind it
-- see [this](https://github.com/dbsrgits/dbix-class/blob/master/lib/DBIx/Class/Relationship/ManyToMany.pm#L64-L77)
+- see [this](https://github.com/dbsrgits/dbix-class/blob/ab1043a6/lib/DBIx/Class/Relationship/ManyToMany.pm#L64-L77)
 
 ---
 ## Polymorphic Relationships?
@@ -350,7 +353,7 @@ Note:
 ---
 ## Polymorphic Relationships?
 
-Using `many_to_many` bridge having added the previous belongs_to:
+Using `search_related` bridge having added the previous belongs_to:
 
 ```perl
 package SkiResort::Model::LegacySchema::Result::Resort;
@@ -361,23 +364,18 @@ __PACKAGE__->has_many(
   resort_items => 'SkiResort::Model::LegacySchema::Result::ResortItem',
   { 'foreign.resort_id' => 'self.id' }
 );
-
-__PACKAGE__->many_to_many(
-  'pistes' => 'resort_items' => 'piste'
-);
 ```
 
 Allows:
 
 ```perl
-$model->resultset( "Resort" )->first->pistes->first->name;
+$model->resultset( "Resort" )->first
+    ->search_related( 'resort_items' )
+    ->search_related( 'piste' )->first->name;
 ```
 
 Note:
 - example: ./examples/slides/polymorphic_relationships_mtm.sh
-- note difference: ->first->piste**s**->first->name
-- compared to: ->first->piste->name
-- can't use prefetch (many_to_many isn't a relationship)
 
 ---
 ## Polymorphic Relationships?
@@ -439,6 +437,11 @@ Note:
 - DBIx::Class::InflateColumn::*
 - a couple of these are core to DBIx::Class, e.g. InflateColumn::DateTime
   - has ways to handle timezones, locale, etc
+
+---
+## Dates
+
+https://metacpan.org/pod/DBIx::Class::Helper::ResultSet::DateMethods1#SYNOPSIS
 
 ---
 ## Fixing Column Data With Filters
@@ -650,7 +653,7 @@ sub resultset {
 
 Note:
 - what i've been using in the examples
-- console_monochrome if you don't want colours
+- console_monochrome if you don't want colours/want to see exact bind sites
 - put the sub in your Schema.pm module
 - shows you potential ->resultset calls missing prefetch
 - as seen in examples, e.g. ./examples/slides/adding_relationships.sh
@@ -674,7 +677,7 @@ Note:
 + Thin controllers, fat model
     - The ORM is *not* your model
     - Use it *in* your model
-+ DBIx::Class can be thought of as a toolkit, not just an ORM
++ DBIx::Class can be thought of as a toolkit not just an ORM, nor an opinionated framework 
 + Define relationships even if they don't exist as FKs in the schema
 + Filters can help you fix problems with data
 	- So you don't need to faff about downstream

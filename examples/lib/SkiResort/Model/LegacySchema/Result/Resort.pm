@@ -32,10 +32,6 @@ __PACKAGE__->has_many(
   { 'foreign.resort_id' => 'self.id' }
 );
 
-__PACKAGE__->many_to_many(
-  'pistes' => 'resort_items' => 'piste'
-);
-
 __PACKAGE__->load_components( "FilterColumn" );
 
 __PACKAGE__->filter_column( active => {

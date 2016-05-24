@@ -47,3 +47,95 @@ http://www.perladvent.org/2012/2012-12-21.html
 ### Documentation
 
 https://rawgit.com/ribasushi/c5d8a29cac40d432fbaf/raw/b638610665ee7bdeb14c27726a6354e929edbd3f/dbic_redocument.htm
+
+### More Feedback From riba
+
+10:10 <Lee> hey!
+10:11 <Lee> https://github.com/leejo/battling_a_legacy_schema_with_dbic/blob/master/presentation.md # this is just about done - i just need to replace the many_to_many with search related and add some bonus antipatterns
+10:12 <Lee> i need a couple more gotchas as well ;)
+10:44 <ribasushi> reading...
+10:44 <ribasushi> So your trivial SQL statements ... right? <--- EPARSE
+10:45 <ribasushi> quoting Ovid, who was quoting Joel Spolsky <--- throw in a couple of links for the poor souls who won't see the presentation live (asking for a friend >.>)
+10:45 <Lee> :)
+10:46 <Lee> simple schemas become non-simple, ergo simple SQL becomes non-simple (ok, maybe not but...)
+10:46 <ribasushi> ah
+10:47 <ribasushi> hm... I *think* expending a sentence or two during the start (don't need to mention in slides) what "model" actually means in this context is beneficial
+10:47 <ribasushi> for one - there will be newbies
+10:47 <Lee> yep
+10:47 <ribasushi> and secondly - the term is so overloaded... that if you ask me to explain 'Model' I won't be confident in my answer
+10:48 <Lee> i agree
+10:48 <ribasushi> on the first note - what did you mean to write?
+10:48 <ribasushi> (before I move on down)
+10:49 <Lee> generally, you're going to write some classes that encapsulate the business logic
+10:49 <Lee> and many of those will be tied to the data store
+10:49 <ribasushi> no I meant
+10:50 <ribasushi> "So your trivial SQL statements ... right?" <-- the literal sentence/note
+10:51 <Lee> oh, purposeful ellipses. i probably shouldn't be that vague in the slides
+10:53 <ribasushi> I am at "legacy chema"
+10:53 <ribasushi> *schema
+10:53 <ribasushi> you should so insert "My schema..." based on http://i.memecaptain.com/gend_images/3Erfew.jpg
+10:53 <Lee> ok, updated
+10:54 <ribasushi> silly nit: fix my quote s/vanstyn_'s/vanstyn's/
+10:57 <ribasushi> in the dbicdump example, I strongly recommend adding https://metacpan.org/pod/DBIx::Class::Schema::Loader::Base#result_base_class
+10:57 <ribasushi> it makes things a tad harder to run (the class needs to exist ahead of time)
+10:57 <ribasushi> but it saves *so much* trouble down the road
+10:57 <ribasushi> for the purpose of demo it's probably overkill, but at least mention it as a footnote
+10:57  * ribasushi has been trying to convince ilmari that he needs to implement one for new dumps, but ENOAVAIL
+10:59 <ribasushi> * useful to have this as a script to rerun as required
+10:59 <ribasushi>  => mention that it is safe to rerun on production / modified files and a "see further"
+11:01 <Lee> oh, result_base_class looks useful
+11:03 <ribasushi> fix the m2m link to be an explicit commitish: https://github.com/dbsrgits/dbix-class/blob/ab1043a6/lib/DBIx/Class/Relationship/ManyToMany.pm#L64-L77
+11:04 <ribasushi> the codebase moved on a bit since, and will do so again very soon ( last round of ASSERT's to catch mistakes pending )
+11:06 <ribasushi> I'll pipe up again with a recommendation to gut the m2m mention in polymorphic rels: change $model->resultset( "Resort" )->first->pistes->first->name;  to   $model->resultset( "Resort"
+                  )->first->search_related('resort_items')->search_related('pistes'->first->name;
+11:06 <ribasushi> ( and I won't bug you about that again ;)
+11:06 <Lee> yes, will do that :)
+11:08 <ribasushi> Stop using your RDMS for date calculations / localisation. <--- agreed, but you can add a followup slide
+11:08 <Lee> so many_to_many is generally discouraged, or it's more about letting people see how easy it is to chain searches?
+11:09 <ribasushi> it is generally discouraged, but I never got around to write comprehensive docs about it
+11:09 <Lee> a follow up showing examples?
+11:09 <ribasushi> basically the problem with m2m is thus:
+11:09 <ribasushi> sec - let me answer the m2m q first
+11:10 <ribasushi> m2m *only* makes sense when you have strict metadata-less linker tables (only left_id and right_id columns, and nothing else) - then it hides things well
+11:10 <ribasushi> however in the real world this almost never happens
+11:10 <ribasushi> you usually have (left, right, link_attrs)
+11:10 <Lee> ah, that makes perfect sense
+11:10 <ribasushi> and then things explode conceptually because folks both want to use the "nice method" but want to see the things they just hid away
+11:11 <Lee> that may well be another antipattern, i mean a linking table with metadata
+11:11 <ribasushi> hence if you look at how m2m handles attrs - it is a steaming mess: people were adding workarounds left and right, until the entire system became plain unreliable
+11:11 <ribasushi> well... it really depends
+11:11 <ribasushi> there are perfectly valid use cases for "decorated" links
+11:12 <Lee> yes
+11:12 <ribasushi> invoice <=> lineitems <=> products
+11:12 <ribasushi> where do you store the order of the lines?
+11:13 <ribasushi> ( left alone line prices, extensions, etc )
+11:14 <ribasushi> bottom line: the m2m concept is inherently a leaky abstraction, hence a "one bridge to rule them all" is not possible in theory, and in practice the m2m bridges do not cut the mustard either
+11:14 <ribasushi> does this give you sufficient answer to your "is this discouraged" q?
+11:15 <ribasushi> ( will wait before moving on ;)
+11:15 <Lee> yep
+11:15 <ribasushi> onwards to dates?
+11:17 <Lee> yep
+11:17 <ribasushi> so
+11:17 <ribasushi> <ribasushi> Stop using your RDMS for date calculations / localisation. <--- agreed, but you can add a followup slide:
+11:19 <ribasushi> "However, given your legacy setup chances are you already have tons of RDBMS-side code, and can not move away from it because your business logic depends on your RDBMS' time sync, and writing this shit makes your
+                  kitten's cry: you can use https://metacpan.org/pod/DBIx::Class::Helper::ResultSet::DateMethods1#SYNOPSIS to make your life less miserable"
+11:19 <ribasushi> ( with less words ;)
+11:19 <Lee> heh
+11:21 <ribasushi>     data_type     => "varchar( 255 )",
+11:21 <ribasushi>  <-- wrong (well, non-best-practice)
+11:21 <ribasushi> data_type => 'varchar', size => 255
+11:22 <Lee> hmm, that came out of schema::loader - missing an option perhaps?
+11:22 <ribasushi> bizarre... shouldn't have happened
+11:22 <ribasushi> I'd vote "bug"
+11:22 <Lee> yep, just grepped the gen'd classes and it's the same
+11:22 <ribasushi> recent S::L ?
+11:23 <Lee> 0.07045
+11:23 <Lee> most recent
+11:23 <ribasushi> yeah, please throw a bug when time permits
+11:23 <ribasushi> this is definitely wrong
+11:23 <Lee> will do
+11:24 <ribasushi> console_monochrome if you don't want colours <--- .../want to see the exact bind sites
+11:25 <ribasushi> DBIx::Class can be thought of as a toolkit, not just an ORM <--- just an ORM, nor opinionated framework
+11:26 <ribasushi> rest looks good
+11:26 <ribasushi> ++
+11:26 <Lee> thanks v.much :)
