@@ -7,6 +7,7 @@ YAPC::{NA,EU} 2016
 Note:
 - who has experience with DBIx::Class?
 - with what they would call a legacy schema?
+- there will be live demos!
 
 ---
 ## Me?
