@@ -11,7 +11,7 @@ use Connect qw/ model /;
 my $model = model();
 
 say "";
-say "----> " .  $model->resultset( "Resort" )->first
+say "----> " .  $model->resultset( "Resort" )
 	->search_related( 'resort_items' )
 	->search_related( 'piste' )->first->name;
 

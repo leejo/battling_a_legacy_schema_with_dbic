@@ -32,8 +32,7 @@ Note:
 - my first intro to dbic, don't want to go back
 - no writing same SQL over and over
 - [quoting Ovid](https://programmers.stackexchange.com/questions/304520/when-should-i-use-perls-dbixclass/304557#304557), who was [quoting Joel Spolsky](http://www.joelonsoftware.com/articles/LeakyAbstractions.html)
-- concentrate on the business logic
-- objects
+- concentrate on the business logic objects, the "model" (somewhat overloaded term)
 - DBIx::Class is not just an ORM, it's a toolkit (plugins, etc)
 
 ---
@@ -170,6 +169,7 @@ Note:
 
 Note:
 - a re-purposed schema
+- no, we don't have any tables named "potato"
 
 ---
 ## Relationships (or lack thereof)
@@ -179,6 +179,7 @@ Note:
 - "they're slow"
 - "they don't give us anything"
 - "they make queries over complicated"
+- some storage engines didn't support them
 - The R in "RDBMS" is important
 
 ---
@@ -208,7 +209,7 @@ Note:
 - cd examples; sh db/gen_dbic_classes.sh lib db/legacy/resorts_legacy.db 1
 - useful to have this as a script to rerun as required
 - safe to rerun on modified classes (assuming no changes above the md5sum)
-- [result_base_class](https://metacpan.org/pod/DBIx::Class::Schema::Loader::Base#result_base_class)=DBIx::Class::Code (the default, can change
+- [result_base_class](https://metacpan.org/pod/DBIx::Class::Schema::Loader::Base#result_base_class)=DBIx::Class::Code (the default, can change)
 - saves trouble/time down the road
 
 ---
@@ -369,13 +370,16 @@ __PACKAGE__->has_many(
 Allows:
 
 ```perl
-$model->resultset( "Resort" )->first
+$model->resultset( "Resort" )
     ->search_related( 'resort_items' )
     ->search_related( 'piste' )->first->name;
 ```
 
 Note:
 - example: ./examples/slides/polymorphic_relationships_mtm.sh
+- note in showing the example that we only run one query
+- the query happens nowhere during search_*
+- we can walk anywhere
 
 ---
 ## Polymorphic Relationships?
@@ -441,7 +445,9 @@ Note:
 ---
 ## Dates
 
-https://metacpan.org/pod/DBIx::Class::Helper::ResultSet::DateMethods1#SYNOPSIS
+[DBIx::Class::Helper::ResultSet::DateMethods](https://metacpan.org/pod/DBIx::Class::Helper::ResultSet::DateMethods1#SYNOPSIS)
+
+######## TODO
 
 ---
 ## Fixing Column Data With Filters
@@ -654,9 +660,10 @@ sub resultset {
 Note:
 - what i've been using in the examples
 - console_monochrome if you don't want colours/want to see exact bind sites
-- put the sub in your Schema.pm module
+- put the sub in your Schema.pm module (or base class)
 - shows you potential ->resultset calls missing prefetch
 - as seen in examples, e.g. ./examples/slides/adding_relationships.sh
+- been meaning to write something to parse the out of this, but...
 
 ---
 ## Gotchas
@@ -669,6 +676,7 @@ Note:
 
 Note:
 - "ORMs are slow", no you're probably not using it correctly
+- representative data set + DBIC_TRACE to find optimisation points
 - up to date using the script shown in "Generating Classes"
 
 ---
@@ -698,6 +706,7 @@ Logging
 Deployment
 
 + [DBIx::Class::DeploymentHandler](https://metacpan.org/pod/DBIx::Class::DeploymentHandler)
++ [http://techblog.babyl.ca/entry/dbix-class-deploymenthandler-rocks](http://techblog.babyl.ca/entry/dbix-class-deploymenthandler-rocks)
 
 Helpers
 
