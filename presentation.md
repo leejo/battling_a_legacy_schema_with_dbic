@@ -4,12 +4,20 @@ Battling a Legacy Schema With DBIx::Class
 
 YAPC::{NA,EU} 2016
 
+Note:
+- who has experience with DBIx::Class?
+- with what they would call a legacy schema?
+
 ---
 ## Me?
 
 ![me](img/card.jpg)
 
 [http://leejo.github.io/code](http://leejo.github.io/code)
+
+Note:
+- briefly introduce Givengain
+- examples here taken from work we have done
 
 ---
 ## Why DBIx::Class?
