@@ -18,6 +18,8 @@ Note:
 
 Note:
 - briefly introduce Givengain
+- gave a talk on the frontend stuff
+- this is about the backend
 - examples here taken from work we have done
 
 ---
@@ -119,6 +121,16 @@ Note:
 - a well designed schema: you can just about point DBIx::Class at it and run
 - but we can still use dbic with a legacy schema, just needs some help
 - following: how we can abstract problems away to ease paying off that debt.
+
+---
+## Legacy Schema?
+
+![antipatterns](img/sql_ap.jpg)
+
+Note:
+- many more examples can be found in this book
+- legacy schema probably contains many of these
+- that's not to say a well designed schema won't contain any
 
 ---
 
@@ -450,13 +462,39 @@ Note:
 - DBIx::Class::InflateColumn::*
 - a couple of these are core to DBIx::Class, e.g. InflateColumn::DateTime
   - has ways to handle timezones, locale, etc
+- stop usings RDMS, see next slide
 
 ---
-## Dates
-
 [DBIx::Class::Helper::ResultSet::DateMethods](https://metacpan.org/pod/DBIx::Class::Helper::ResultSet::DateMethods1#SYNOPSIS)
 
-######## TODO
+```perl
+# get count per year/month
+$rs->search(undef, {
+   columns => {
+      count => '*',
+      year  => $rs->dt_SQL_pluck({ -ident => '.start' }, 'year'),
+      month => $rs->dt_SQL_pluck({ -ident => '.start' }, 'month'),
+   },
+   group_by => [
+      $rs->dt_SQL_pluck({ -ident => '.start' }, 'year'),
+      $rs->dt_SQL_pluck({ -ident => '.start' }, 'month'),
+   ],
+});
+
+# mysql
+(SELECT `me`.*, EXTRACT(MONTH FROM `me`.`start`), EXTRACT(YEAR FROM `me`.`start`)
+FROM `HasDateOps` `me`
+GROUP BY EXTRACT(YEAR FROM `me`.`start`), EXTRACT(MONTH FROM `me`.`start`))
+ 
+# SQLite
+(SELECT "me".*, STRFTIME('%m', "me"."start"), STRFTIME('%Y', "me"."start")
+FROM "HasDateOps" "me"
+GROUP BY STRFTIME('%Y', "me"."start"), STRFTIME('%m', "me"."start"))
+```
+
+Note:
+- if you already have lots of RDMS-side date code
+- and can't move away because you're dependent on the DB time sync, etc
 
 ---
 ## Fixing Column Data With Filters
@@ -715,7 +753,7 @@ Logging
 Deployment
 
 + [DBIx::Class::DeploymentHandler](https://metacpan.org/pod/DBIx::Class::DeploymentHandler)
-+ [http://techblog.babyl.ca/entry/dbix-class-deploymenthandler-rocks](http://techblog.babyl.ca/entry/dbix-class-deploymenthandler-rocks)
++ [Why it rocks](http://techblog.babyl.ca/entry/dbix-class-deploymenthandler-rocks)
 
 Helpers
 
@@ -759,6 +797,3 @@ Links and resources:
 + [DBIx::Class](https://metacpan.org/release/DBIx-Class) on metacpan.
 + [fREW's blog](https://blog.afoolishmanifesto.com/), lots of DBI(x::Class) tips.
 + `#dbix-class` on `irc.perl.org`
-
----
-### Bonus SQL Anti-Patterns!
