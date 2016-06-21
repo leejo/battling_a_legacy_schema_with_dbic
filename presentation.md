@@ -227,7 +227,7 @@ dbicdump \
 
 Note:
 - Result source classes
-- cd examples; sh db/gen_dbic_classes.sh lib db/legacy/resorts_legacy.db 1
+- cd examples; sh db/gen_dbic_classes_legacy.sh lib db/legacy/resorts_legacy.db 1
 - useful to have this as a script to rerun as required
 - safe to rerun on modified classes (assuming no changes above the md5sum)
 - [result_base_class](https://metacpan.org/pod/DBIx::Class::Schema::Loader::Base#result_base_class)=DBIx::Class::Code (the default, can change)
@@ -644,6 +644,7 @@ package SkiResort::Model::LegacySchema::Result::PistesForRatingMatchingString;
  
 use base qw/SkiResort::Model::LegacySchema::Result::PistesForRating/;
  
+__PACKAGE__->table('pistes_for_rating_like');
 __PACKAGE__->result_source_instance->view_definition(
 	__PACKAGE__->SUPER::result_source_instance->view_definition . "
 	AND piste.name like ?

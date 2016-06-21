@@ -18,3 +18,4 @@ __PACKAGE__->result_source_instance->view_definition( "
 " );
 
 1;
+
