@@ -63,13 +63,13 @@ Note:
 
 Abstract this away into your model:
 
-```perl
+```nohighlight
 $model->resultset( "Piste" )->find( 17 )->name;
 ```
 
 Like so:
 
-```perl
+```nohighlight
 SkiResort::Model::Piste->new( id => 17 )->name;
 ```
 
@@ -87,7 +87,7 @@ Note:
 
 And you can better utilise exceptions:
 
-```perl
+```nohighlight
 try sub {
 	...
 	my $piste = SkiResort::Model::Piste->new( id => $piste_id );
@@ -206,7 +206,7 @@ Note:
 ---
 ## Generating Classes
 
-```bash
+```nohighlight
 #!/bin/bash
 
 set -e -x -u
@@ -236,7 +236,7 @@ Note:
 ---
 ## Generating Classes
 
-```perl
+```nohighlight
 use utf8;
 package SkiResort::Model::LegacySchema::Result::ResortItem;
 
@@ -274,7 +274,7 @@ Note:
 ---
 ## Adding Relationships
 
-```perl
+```nohighlight
 # You can replace this text with custom code or comments, and it will be
 # preserved on regeneration
 
@@ -289,14 +289,14 @@ __PACKAGE__->belongs_to(
 
 Which gives us:
 
-```perl
+```nohighlight
 $model->resultset( "ResortItem" )
 	->first->resort->name;
 ```
 
 And of course:
 
-```perl
+```nohighlight
 $model->resultset( "ResortItem" )->search(
 	{},{ prefetch => [ qw/ resort / ] }
 )->first->resort->name;
@@ -340,7 +340,7 @@ Note:
 ---
 ## Polymorphic Relationships?
 
-```perl
+```nohighlight
 package SkiResort::Model::LegacySchema::Result::ResortItem;
 
 ...
@@ -362,7 +362,7 @@ __PACKAGE__->belongs_to(
 
 Allows:
 
-```perl
+```nohighlight
 $model->resultset( "PisteItem" )->search(
     { item_source => 'piste' },
     { prefetch => [ qw/ piste / ] }
@@ -377,7 +377,7 @@ Note:
 
 Using `search_related` bridge having added the previous belongs_to:
 
-```perl
+```nohighlight
 package SkiResort::Model::LegacySchema::Result::Resort;
 
 ...
@@ -390,7 +390,7 @@ __PACKAGE__->has_many(
 
 Allows:
 
-```perl
+```nohighlight
 $model->resultset( "Resort" )
     ->search_related( 'resort_items' )
     ->search_related( 'piste' )->first->name;
@@ -407,7 +407,7 @@ Note:
 
 And if you have many of these:
 
-```perl
+```nohighlight
 package SkiResort::Model::LegacySchema::Result::ResortItem;
 
 ...
@@ -442,13 +442,13 @@ We can fix data and/or get objects from column data.
 
 [DateTime](https://metacpan.org/pod/DBIx::Class::InflateColumn::DateTime) - You'll almost certainly want this one:
 
-```perl
+```nohighlight
 __PACKAGE__->load_components(qw/InflateColumn::DateTime/);
 ```
 
 When `$column` is a `date`, `timestamp` or `datetime` data type:
 
-```perl
+```nohighlight
 $model->resultset( "Foo" )->first->$column->subtract->( months => 1 )->ymd( '-' );
 ```
 
@@ -467,7 +467,7 @@ Note:
 ---
 [DBIx::Class::Helper::ResultSet::DateMethods](https://metacpan.org/pod/DBIx::Class::Helper::ResultSet::DateMethods1#SYNOPSIS)
 
-```perl
+```nohighlight
 # get count per year/month
 $rs->search(undef, {
    columns => {
@@ -503,7 +503,7 @@ The `resort` table contains an `active` column that is a `char(1)`.
 
 It should be a `boolean`, so:
 
-```perl
+```nohighlight
 package SkiResort::Model::LegacySchema::Result::Resort;
 
 ...
@@ -518,7 +518,7 @@ __PACKAGE__->filter_column( active => {
 
 Cleans up significantly:
 
-```perl
+```nohighlight
 if ( $model->resultset( "Resort" )->first->active ) {
 	...
 }
@@ -533,7 +533,7 @@ Note:
 
 How about sanity checking a column that contains a CSV list?
 
-```perl
+```nohighlight
 __PACKAGE__->filter_column( column_with_csv => {
 
 	filter_from_storage   => sub { return [ split( ',',$_[1] ) ]; },
@@ -560,7 +560,7 @@ Note:
 ---
 ## Complex Queries
 
-```perl
+```nohighlight
 my $sql = "Some complex SQL we don't want to rewrite as SQL::Abstract";
 ```
 
@@ -578,7 +578,7 @@ Note:
 ---
 ## dbh_do
 
-```perl
+```nohighlight
 my @results = $schema->storage->dbh_do(
 	sub {
 		my ( $storage,$dbh,@binds ) = @_;
@@ -598,7 +598,7 @@ Note:
 ---
 ## Virtual Views
 
-```perl
+```nohighlight
 package SkiResort::Model::LegacySchema::Result::PistesForRating;
  
 use base qw/DBIx::Class::Core/;
@@ -627,7 +627,7 @@ Note:
 ---
 ## Virtual Views
 
-```perl
+```nohighlight
 $model->resultset( "PistesForRating" )
 	->search( {},{ bind => [ $rating ] } )
 ```
@@ -639,7 +639,7 @@ Note:
 ---
 ## Virtual Views Extended
 
-```perl
+```nohighlight
 package SkiResort::Model::LegacySchema::Result::PistesForRatingMatchingString;
  
 use base qw/SkiResort::Model::LegacySchema::Result::PistesForRating/;
@@ -655,7 +655,7 @@ __PACKAGE__->result_source_instance->view_definition(
 
 And:
 
-```perl
+```nohighlight
 $model->resultset( "PistesForRatingMatchingString" )
 	->search( {},{ bind => [ $rating,"%$string%" ] } )
 ```
@@ -681,7 +681,7 @@ Note:
 * `DBIC_TRACE_PROFILE=console` - for pretty printing
 * `DBI_TRACE=1 # 2,3,SQL,...` - if you're using dbh_do
 
-```perl
+```nohighlight
 use Carp qw/ cluck longmess shortmess /;
 
 sub resultset {
@@ -720,7 +720,7 @@ Note:
 
 <p class="fragment"> Test your app with a representative dataset (where possible). </p>
 
-<p class="fragment"> Keep your Result classes up to date. </p>
+<p class="fragment"> Keep your ResultSource classes up to date. </p>
 
 Note:
 - "ORMs are slow", no you're probably not using it correctly
