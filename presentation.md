@@ -714,6 +714,11 @@ Note:
 - been meaning to write something to parse the out of this, but...
 
 ---
+## Connection Options
+
+TODO
+
+---
 ## Gotchas
 
 <p class="fragment"> Prefetch prefetch prefetch. </p>
