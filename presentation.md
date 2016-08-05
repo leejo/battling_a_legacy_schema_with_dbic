@@ -8,6 +8,7 @@ Note:
 - who has experience with DBIx::Class?
 - with what they would call a legacy schema?
 - there will be live demos!
+- suggest following along on screen so code examples are clear
 
 ---
 ## Me?
@@ -44,7 +45,7 @@ Note:
 - no writing same SQL over and over
 - [quoting Ovid](https://programmers.stackexchange.com/questions/304520/when-should-i-use-perls-dbixclass/304557#304557), who was [quoting Joel Spolsky](http://www.joelonsoftware.com/articles/LeakyAbstractions.html)
 - concentrate on the business logic objects, the "model" (somewhat overloaded term)
-- DBIx::Class is not just an ORM, it's a toolkit (plugins, etc)
+- DBIx::Class is not just an ORM, it's a toolkit (plugins, helpers, etc)
 
 ---
 ### More About That Model
@@ -527,6 +528,7 @@ if ( $model->resultset( "Resort" )->first->active ) {
 Note:
 - DBIx::Class::FilterColumn
 - ./examples/slides/fixing_column_data_with_filters.sh
+- en/decryption of columns
 
 ---
 ## Fixing Column Data With Filters
@@ -716,7 +718,30 @@ Note:
 ---
 ## Connection Options
 
-TODO
+UTF-8
+
+```nohighlight
+mysql_enable_utf8 => 1,
+```
+
+Almost certainly
+
+```
+mysql_auto_reconnect => 1,
+```
+
+If only new code is going to use the dbic route:
+
+```
+$schema->storage->on_connect_do( [
+    "SET sql_mode=STRICT_ALL_TABLES",
+] );
+```
+
+Note:
+- or whatever the flag for other db engines is
+- see the perldoc for your DBD driver
+- STRICT_ALL_TABLES - for mysql
 
 ---
 ## Gotchas
