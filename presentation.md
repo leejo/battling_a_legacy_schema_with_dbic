@@ -398,7 +398,7 @@ $model->resultset( "Resort" )
 ```
 
 Note:
-- example: ./examples/slides/polymorphic_relationships_mtm.sh
+- example: ./examples/slides/polymorphic\_relationships\_mtm.sh
 - note in showing the example that we only run one query
 - the query happens nowhere during search_*
 - we can walk anywhere
@@ -431,7 +431,7 @@ foreach my $source ( qw/ piste lift / ) {
 ```
 
 Note:
-- example: ./examples/slides/polymorphic_relationships_lift.sh
+- example: ./examples/slides/polymorphic\_relationships\_lift.sh
 
 ---
 ## Fixing Column Data

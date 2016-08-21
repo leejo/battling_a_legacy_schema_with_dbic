@@ -7,4 +7,4 @@ requires 'DBIx::Class';
 requires 'DBIx::Class::UnicornLogger';
 requires 'Mojolicious';
 requires 'Try::Tiny::SmartCatch';
-#requires 'RapidApp'; for rdbic.pl examples
+requires 'RapidApp'; # for rdbic.pl examples
